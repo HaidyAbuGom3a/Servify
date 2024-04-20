@@ -1,0 +1,110 @@
+package org.haidy.servify.app.di
+
+import android.content.Context
+import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.firebase.auth.FirebaseAuth
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import org.haidy.servify.data.local.IDataStore
+import org.haidy.servify.data.remote.network.ServifyApiService
+import org.haidy.servify.data.repository.AuthFacebookRepositoryImp
+import org.haidy.servify.data.repository.AuthGoogleRepositoryImp
+import org.haidy.servify.data.repository.AuthorizationRepositoryImp
+import org.haidy.servify.data.repository.LocationRepositoryImp
+import org.haidy.servify.data.repository.ServiceRepositoryImp
+import org.haidy.servify.data.repository.UserRepositoryImp
+import org.haidy.servify.data.repository.fake.FakeServicesRepository
+import org.haidy.servify.domain.repository.IAuthFacebookRepository
+import org.haidy.servify.domain.repository.IAuthGoogleRepository
+import org.haidy.servify.domain.repository.IAuthorizationRepository
+import org.haidy.servify.domain.repository.ILocationRepository
+import org.haidy.servify.domain.repository.IServiceRepository
+import org.haidy.servify.domain.repository.IUserRepository
+import javax.inject.Named
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
+
+    @Singleton
+    @Provides
+    fun provideAuthRepository(
+        apiService: ServifyApiService,
+        @ApplicationContext context: Context
+    ): IAuthorizationRepository {
+        return AuthorizationRepositoryImp(apiService, context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserRepository(
+        apiService: ServifyApiService,
+        dataStore: IDataStore,
+        @ApplicationContext context: Context
+    ): IUserRepository {
+        return UserRepositoryImp(apiService, dataStore, context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGoogleAuthRepository(
+        apiService: ServifyApiService,
+        webClientId: String,
+        oneTapClient: SignInClient,
+        auth: FirebaseAuth,
+        userRepository: IUserRepository
+    ): IAuthGoogleRepository {
+        return AuthGoogleRepositoryImp(
+            apiService,
+            webClientId,
+            oneTapClient,
+            auth,
+            userRepository
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideFacebookAuthRepository(
+        apiService: ServifyApiService,
+        auth: FirebaseAuth,
+        userRepository: IUserRepository
+    ): IAuthFacebookRepository {
+        return AuthFacebookRepositoryImp(
+            apiService,
+            auth,
+            userRepository
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideLocationRepository(
+        apiService: ServifyApiService,
+    ): ILocationRepository {
+        return LocationRepositoryImp(
+            apiService
+        )
+    }
+
+    @Singleton
+    @Provides
+    @Named("services")
+    fun provideServiceRepository(
+        apiService: ServifyApiService
+    ): IServiceRepository {
+        return ServiceRepositoryImp(apiService)
+    }
+
+    @Singleton
+    @Provides
+    @Named("fakeServices")
+    fun provideFakeServiceRepository(): IServiceRepository {
+        return FakeServicesRepository()
+    }
+
+}

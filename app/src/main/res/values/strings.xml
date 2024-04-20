@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Servify</string>
+    <string name="web_client_id">300545863446-3gs3nuu5r1blb7ktgoffql6d5k72nlch.apps.googleusercontent.com</string>
+    <string name="com.google.firebase.crashlytics.mapping_file_id">none</string>
+    <string name="facebook_app_id">1747942215707092</string>
+    <string name="fb_login_protocol_scheme">03d565d498802c350f9f595e32cd6eb9</string>
+    <string name="facebook_client_token">H2W1R8nwKiJ55qpqRwfwrv4RCps=</string>
+</resources>
