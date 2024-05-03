@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.modifier.noRippleEffect
@@ -48,7 +49,7 @@ fun ItemService(
             text = title,
             style = Theme.typography.bodyLarge.copy(color = Theme.colors.contrast),
             modifier = Modifier.padding(top = 8.dp),
-
+            textAlign = TextAlign.Center
             )
     }
 }
