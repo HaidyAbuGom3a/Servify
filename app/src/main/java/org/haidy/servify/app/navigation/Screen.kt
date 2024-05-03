@@ -14,7 +14,7 @@ sealed class Screen(
 
     object Home : Screen(ServifyDestination.HOME, resources.homeIcon, resources.homeIcon)
     object Location :
-        Screen(ServifyDestination.LOCATION, resources.locationIcon, resources.locationIcon)
+        Screen(ServifyDestination.LOCATION, resources.directionIcon, resources.directionIcon)
 
     object BookingTrack :
         Screen(

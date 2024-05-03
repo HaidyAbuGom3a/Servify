@@ -5,4 +5,6 @@ interface HomeInteractionListener {
     fun onClickSettings()
     fun onClickNotifications()
     fun onClickLogout()
+    fun onClickShowAllServices()
+    fun onClickShowAllSpecialists()
 }

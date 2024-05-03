@@ -92,4 +92,12 @@ class HomeViewModel @Inject constructor(
             { _state.update { it.copy(isLoading = false) } }
         )
     }
+
+    override fun onClickShowAllServices() {
+        sendNewEffect(HomeUiEffect.NavigateToServices)
+    }
+
+    override fun onClickShowAllSpecialists() {
+        sendNewEffect(HomeUiEffect.NavigateToBestSpecialists)
+    }
 }

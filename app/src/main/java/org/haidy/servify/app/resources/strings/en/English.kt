@@ -102,5 +102,6 @@ data class English(
     override val male: String = "Male",
     override val countryIsRequired: String = "Please select the country",
     override val governorateIsRequired: String = "Please select the governorate",
-    override val imageUpdatedSuccessfully: String = "Image updated successfully"
+    override val imageUpdatedSuccessfully: String = "Image updated successfully",
+    override val nearestSpecialists: String = "Nearest specialists",
 ) : IStringResources

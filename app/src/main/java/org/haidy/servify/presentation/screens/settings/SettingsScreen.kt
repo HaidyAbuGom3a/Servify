@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -26,6 +27,7 @@ import org.haidy.servify.presentation.screens.settings.composables.getSecondSect
 import org.haidy.servify.presentation.screens.settings.composables.getThirdSectionItems
 import org.haidy.servify.presentation.screens.updatePassword.navigateToUpdatePassword
 import org.haidy.servify.presentation.util.EffectHandler
+import org.haidy.servify.presentation.util.sum
 
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
@@ -58,13 +60,13 @@ fun SettingsContent(listener: SettingsInteractionListener, state: SettingsUiStat
             )
         }
     ) {
-
+        val padding =
+            PaddingValues(top = 120.dp, start = 16.dp, end = 16.dp).sum(otherPaddingValues = it)
         Column(
             Modifier
                 .fillMaxSize()
                 .background(Theme.colors.background)
-                .padding(it)
-                .padding(top = 120.dp, start = 16.dp, end = 16.dp),
+                .padding(padding),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             val firstSectionItems = getFirstSectionItems(
@@ -72,7 +74,8 @@ fun SettingsContent(listener: SettingsInteractionListener, state: SettingsUiStat
                 isNotificationOn = state.isNotificationOn,
                 languageCode = Resources.languageCode.value
             )
-            val secondSectionItems = getSecondSectionItems(listener = listener, themeMode = state.themeMode)
+            val secondSectionItems =
+                getSecondSectionItems(listener = listener, themeMode = state.themeMode)
             val thirdSectionItems = getThirdSectionItems(listener = listener)
             SettingsCard(items = firstSectionItems)
             SettingsCard(items = secondSectionItems)

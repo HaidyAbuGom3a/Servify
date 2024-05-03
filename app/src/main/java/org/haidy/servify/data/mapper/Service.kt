@@ -9,6 +9,7 @@ fun ServiceDto.toService(): Service {
         name = name ?: "",
         description = description ?: "",
         imageUrl = image ?: "",
-        status = status?.lowercase() == "true"
+        status = status?.lowercase() == "true",
+        discount = 0.0
     )
 }

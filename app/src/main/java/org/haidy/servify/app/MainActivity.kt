@@ -11,7 +11,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.ServifyTheme
@@ -19,6 +18,7 @@ import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.app.utils.CallbackManagerProvider
 import org.haidy.servify.app.utils.ThemeMode
 import org.haidy.servify.app.utils.getIsDarkTheme
+import org.haidy.servify.presentation.screens.location.LocationScreen
 
 
 @AndroidEntryPoint

@@ -18,4 +18,6 @@ object ServifyDestination {
     const val BOOKING_TRACK = "BookingTrack"
     const val SUPPORT = "Support"
     const val VERIFIED = "Verified"
+    const val SERVICES = "Services"
+    const val SPECIALISTS = "Specialists"
 }

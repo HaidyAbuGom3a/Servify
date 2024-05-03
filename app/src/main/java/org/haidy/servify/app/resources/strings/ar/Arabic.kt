@@ -103,4 +103,5 @@ data class Arabic(
     override val countryIsRequired: String = "من فضلك اختر البلد",
     override val governorateIsRequired: String = "من فضلك اختر المحافظة",
     override val imageUpdatedSuccessfully: String = "تم تحديث الصورة بنجاح",
+    override val nearestSpecialists: String = "أقرب المتخصصين",
 ): IStringResources

@@ -1,9 +1,10 @@
 package org.haidy.servify.domain.model
 
 data class Specialist(
+    val id: String,
     val name: String,
-    val service: String,
-    val location: String,
-    val rating: String,
-    val serviceDiscount: String
+    val service: Service,
+    val imageUrl: String,
+    val location: Location,
+    val rating: Double
 )

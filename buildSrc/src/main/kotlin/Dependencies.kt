@@ -170,6 +170,14 @@ object Dependencies {
     val firebaseBom by lazy {
         "com.google.firebase:firebase-bom:${DependencyVersions.FIREBASE_BOM}"
     }
+    // Map
+    val mapDependencies by lazy {
+        listOf(
+            "com.google.android.gms:play-services-maps:${DependencyVersions.MAP}",
+            "com.google.android.gms:play-services-location:${DependencyVersions.GMS_LOCATION}",
+            "com.google.maps.android:maps-compose:${DependencyVersions.MAPS_COMPOSE}",
+        )
+    }
 
     // Paging
     val pagingRuntime by lazy {
@@ -198,6 +206,9 @@ object Dependencies {
         }
         val kotlinSerializationClasspath by lazy {
             "org.jetbrains.kotlin:kotlin-serialization:${DependencyVersions.ClasspathVersions.KOTLIN_SERIALZATION_CLASSPATH}"
+        }
+        val googleLibrariesMapsPlatformClasspath by lazy{
+            "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:${DependencyVersions.ClasspathVersions.MAPS_PLATFORM_CLASSPATH}"
         }
     }
 

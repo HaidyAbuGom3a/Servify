@@ -16,6 +16,7 @@ import org.haidy.servify.presentation.screens.language.languageScreenRoute
 import org.haidy.servify.presentation.screens.location.locationRoute
 import org.haidy.servify.presentation.screens.onBoarding.onBoardingRoute
 import org.haidy.servify.presentation.screens.profile.profileRoute
+import org.haidy.servify.presentation.screens.services.servicesRoute
 import org.haidy.servify.presentation.screens.settings.settingsRoute
 import org.haidy.servify.presentation.screens.support.supportRoute
 import org.haidy.servify.presentation.screens.updatePassword.updatePasswordRoute
@@ -46,5 +47,6 @@ fun ServifyNavGraph(startDestination: String) {
         profileRoute()
         bookingTrackRoute()
         supportRoute()
+        servicesRoute()
     }
 }

@@ -41,6 +41,11 @@ data class DrawableResources(
     val settingsDrawerIcon: Int = R.drawable.settings_drawer_icon,
     val topScreenShape: Int = R.drawable.top_screen_shape,
     val editIcon: Int = R.drawable.edit_icon,
+    val favIcon: Int = R.drawable.fav_icon,
+    val startIcon: Int = R.drawable.star_icon,
+    val filledStartIcon: Int = R.drawable.filled_start_icon,
+    val directionIcon: Int = R.drawable.direction_icon,
+    val walkIcon: Int = R.drawable.walk_icon,
 )
 
 val DrawableDarkResources = DrawableResources(

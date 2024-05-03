@@ -8,8 +8,8 @@ import org.haidy.servify.app.navigation.ServifyDestination
 private const val ROUTE = ServifyDestination.LOCATION
 
 fun NavController.navigateToLocation(clearBackStack: Boolean = false) {
-    navigate(ROUTE){
-        if(clearBackStack){
+    navigate(ROUTE) {
+        if (clearBackStack) {
             popUpTo(graph.id) {
                 inclusive = true
             }
@@ -17,6 +17,6 @@ fun NavController.navigateToLocation(clearBackStack: Boolean = false) {
     }
 }
 
-fun NavGraphBuilder.locationRoute(){
-    composable(ROUTE){ LocationScreen() }
+fun NavGraphBuilder.locationRoute() {
+    composable(ROUTE) { LocationScreen() }
 }

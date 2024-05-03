@@ -4,6 +4,7 @@ plugins {
     kotlin(Plugins.KOTLIN_KAPT)
     id(Plugins.HILT_LIBRARY)
     id(Plugins.SERIALIZATION)
+    id(Plugins.GOOGLE_MAPS)
     id(Plugins.GOOGLE_SERVICES)
 }
 
@@ -51,6 +52,7 @@ android {
 
 dependencies {
     Dependencies.firebaseDependency.forEach { implementation(it) }
+    Dependencies.mapDependencies.forEach { implementation(it) }
     implementation(platform(Dependencies.firebaseBom))
     implementation(Dependencies.glideDependency)
     Dependencies.retrofitDependencies.forEach { implementation(it) }

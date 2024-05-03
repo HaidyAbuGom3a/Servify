@@ -19,16 +19,21 @@ import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.modifier.noRippleEffect
 
 @Composable
-fun ItemService(onClick: () -> Unit, painter: Painter, title: String) {
+fun ItemService(
+    onClick: () -> Unit,
+    painter: Painter,
+    title: String,
+    modifier: Modifier = Modifier
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.noRippleEffect { onClick() }) {
+        modifier = modifier.noRippleEffect { onClick() }
+    ) {
         Box(
             modifier = Modifier
                 .size(56.dp)
                 .clip(CircleShape)
-                .background(Theme.colors.accent300)
-            ,
+                .background(Theme.colors.accent300),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -42,7 +47,8 @@ fun ItemService(onClick: () -> Unit, painter: Painter, title: String) {
         Text(
             text = title,
             style = Theme.typography.bodyLarge.copy(color = Theme.colors.contrast),
-            modifier = Modifier.padding(top = 8.dp)
-        )
+            modifier = Modifier.padding(top = 8.dp),
+
+            )
     }
 }

@@ -9,6 +9,7 @@ buildscript {
         classpath(Dependencies.Classpath.googleServiceClasspath)
         classpath(Dependencies.Classpath.googleFirebaseCrashClasspath)
         classpath(Dependencies.Classpath.kotlinSerializationClasspath)
+        classpath (Dependencies.Classpath.googleLibrariesMapsPlatformClasspath)
     }
     val compose_version by extra("1.4.3")
 }

@@ -101,4 +101,5 @@ interface IStringResources {
     val countryIsRequired: String
     val governorateIsRequired: String
     val imageUpdatedSuccessfully: String
+    val nearestSpecialists: String
 }

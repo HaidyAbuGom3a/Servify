@@ -5,5 +5,6 @@ data class Service(
     val description: String,
     val status: Boolean,
     val name: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val discount: Double,
 )

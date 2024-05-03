@@ -25,42 +25,48 @@ class FakeServicesRepository @Inject constructor() : IServiceRepository {
             "https://imgur.com/Us0D6oB.png",
             true,
             "",
-            ""
+            "",
+            0.0
         ),
         Service(
             "Plumbing",
             "https://imgur.com/bW80VFJ.png",
             true,
             "",
-            ""
+            "",
+            0.0
         ),
         Service(
             "Electricity",
             "https://imgur.com/UngOPii.png",
             true,
             "",
-            ""
+            "",
+            0.0
         ),
         Service(
             "Conditioning",
             "https://imgur.com/NYGGtTW.png",
             true,
             "",
-            ""
+            "",
+            0.0
         ),
         Service(
             "Carpentry",
             "https://imgur.com/Us0D6oB.png",
             true,
             "",
-            ""
+            "",
+            0.0
         ),
         Service(
             "Plumbing",
             "https://imgur.com/bW80VFJ.png",
             true,
             "",
-            ""
+            "",
+            0.0
         ),
     )
 

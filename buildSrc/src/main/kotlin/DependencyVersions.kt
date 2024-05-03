@@ -66,6 +66,10 @@ object DependencyVersions {
     //splash
     const val SPLASH_SCREEN= "1.0.1"
 
+    //map
+    const val MAP = "18.1.0"
+    const val GMS_LOCATION = "21.0.1"
+    const val MAPS_COMPOSE = "2.8.0"
     //paging
     const val PagingRuntimeVersion = "3.1.1"
     const val PagingComposeVersion = "3.2.0"
@@ -78,5 +82,6 @@ object DependencyVersions {
         const val GOOGLE_SERVICES_CLASSPATH = "4.3.15"
         const val FIREBASE_CRASH_CLASSPATH = "2.9.7"
         const val KOTLIN_SERIALZATION_CLASSPATH = "1.8.10"
+        const val MAPS_PLATFORM_CLASSPATH = "2.0.1"
     }
 }

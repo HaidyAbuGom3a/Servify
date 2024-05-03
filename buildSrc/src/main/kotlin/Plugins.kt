@@ -10,4 +10,5 @@ object Plugins {
     const val SERIALIZATION = "org.jetbrains.kotlin.plugin.serialization"
     const val PLUGIN_SERIALIZATION = "plugin.serialization"
     const val GOOGLE_SERVICES = "com.google.gms.google-services"
+    const val GOOGLE_MAPS = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
 }

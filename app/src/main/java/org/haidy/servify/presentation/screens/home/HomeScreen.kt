@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -51,6 +53,7 @@ import org.haidy.servify.presentation.screens.home.composable.ItemService
 import org.haidy.servify.presentation.screens.login.navigateToLogin
 import org.haidy.servify.presentation.screens.onBoarding.composable.PagerIndicator
 import org.haidy.servify.presentation.screens.profile.navigateToProfile
+import org.haidy.servify.presentation.screens.services.navigateToServices
 import org.haidy.servify.presentation.screens.settings.navigateToSettings
 import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.OnLifecycleEvent
@@ -70,6 +73,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
             is HomeUiEffect.NavigateToSettings -> navController.navigateToSettings()
             is HomeUiEffect.NavigateToNotifications -> {}
             HomeUiEffect.NavigateToLogin -> navController.navigateToLogin(true)
+            HomeUiEffect.NavigateToBestSpecialists -> TODO()
+            HomeUiEffect.NavigateToServices -> navController.navigateToServices()
         }
 
     }
@@ -180,11 +185,12 @@ fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
                 title = Resources.strings.services,
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
                 hasShowMore = true,
+                onClickShowMore = { listener.onClickShowAllServices() }
             ) {
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     items(state.services) { service ->
                         val painter = rememberAsyncImagePainter(
@@ -201,6 +207,24 @@ fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
                     }
                 }
             }
+
+            ItemSection(
+                title = Resources.strings.bestSpecialists,
+                modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                hasShowMore = true,
+                onClickShowMore = { listener.onClickShowAllSpecialists() }
+            ) {
+                LazyHorizontalGrid(
+                    rows = GridCells.Fixed(2),
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+
+                }
+            }
+
         }
 
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
