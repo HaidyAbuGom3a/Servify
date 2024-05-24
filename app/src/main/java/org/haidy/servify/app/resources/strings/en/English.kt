@@ -104,4 +104,11 @@ data class English(
     override val governorateIsRequired: String = "Please select the governorate",
     override val imageUpdatedSuccessfully: String = "Image updated successfully",
     override val nearestSpecialists: String = "Nearest specialists",
+    override val canceled: String = "Canceled",
+    override val completed: String = "Completed",
+    override val upcoming: String = "Upcoming",
+    override val booking: String = "Booking",
+    override val addRating: String = "Add Rating",
+    override val rebook: String = "Re-Book",
+    override val reschedule: String = "Reschedule",
 ) : IStringResources

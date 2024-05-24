@@ -104,4 +104,11 @@ data class ArabicEG(
     override val governorateIsRequired: String = "لو سمحت اختار المحافظة",
     override val imageUpdatedSuccessfully: String = "الصورة اتحدثت بنجاح",
     override val nearestSpecialists: String = "أقرب المتخصصين",
+    override val canceled: String = "الملغية",
+    override val completed: String = "المكتملة",
+    override val upcoming: String = "الجاية",
+    override val booking: String = "الحجز",
+    override val addRating: String = "ضيف تقييم",
+    override val rebook: String = "احجز تاني",
+    override val reschedule: String = "غير المعاد",
 ) : IStringResources

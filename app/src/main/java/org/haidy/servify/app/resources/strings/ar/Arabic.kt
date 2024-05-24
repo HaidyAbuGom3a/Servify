@@ -104,4 +104,11 @@ data class Arabic(
     override val governorateIsRequired: String = "من فضلك اختر المحافظة",
     override val imageUpdatedSuccessfully: String = "تم تحديث الصورة بنجاح",
     override val nearestSpecialists: String = "أقرب المتخصصين",
+    override val canceled: String = "الملغاة",
+    override val completed: String = "المكتملة",
+    override val upcoming: String = "القادمة",
+    override val booking: String = "الحجز",
+    override val addRating: String = "اضف تقييم",
+    override val rebook: String = "احجز مجدداً",
+    override val reschedule: String = "اعد تنظيم الموعد",
 ): IStringResources

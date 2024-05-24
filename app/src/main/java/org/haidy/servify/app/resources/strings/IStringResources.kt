@@ -102,4 +102,11 @@ interface IStringResources {
     val governorateIsRequired: String
     val imageUpdatedSuccessfully: String
     val nearestSpecialists: String
+    val upcoming: String
+    val completed: String
+    val canceled: String
+    val booking: String
+    val reschedule: String
+    val rebook: String
+    val addRating: String
 }
