@@ -16,12 +16,14 @@ import org.haidy.servify.data.repository.AuthorizationRepositoryImp
 import org.haidy.servify.data.repository.LocationRepositoryImp
 import org.haidy.servify.data.repository.ServiceRepositoryImp
 import org.haidy.servify.data.repository.UserRepositoryImp
+import org.haidy.servify.data.repository.fake.FakeOrderRepository
 import org.haidy.servify.data.repository.fake.FakeServicesRepository
 import org.haidy.servify.data.repository.fake.FakeSpecialistsRepository
 import org.haidy.servify.domain.repository.IAuthFacebookRepository
 import org.haidy.servify.domain.repository.IAuthGoogleRepository
 import org.haidy.servify.domain.repository.IAuthorizationRepository
 import org.haidy.servify.domain.repository.ILocationRepository
+import org.haidy.servify.domain.repository.IOrderRepository
 import org.haidy.servify.domain.repository.IServiceRepository
 import org.haidy.servify.domain.repository.ISpecialistRepository
 import org.haidy.servify.domain.repository.IUserRepository
@@ -115,6 +117,14 @@ object RepositoryModule {
     @Named("fakeSpecialists")
     fun provideFakeSpecialistsRepository(): ISpecialistRepository {
         return FakeSpecialistsRepository()
+    }
+
+
+    @Singleton
+    @Provides
+    @Named("fakeOrders")
+    fun provideFakeOrdersRepository(): IOrderRepository {
+        return FakeOrderRepository()
     }
 
 }

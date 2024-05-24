@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import org.haidy.servify.app.theme.Theme
 
 @Composable
@@ -24,7 +26,8 @@ fun ServifyOutlinedButton(
     hasIcon: Boolean = false,
     iconPainter: Painter? = null,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    fontSize: TextUnit = 14.sp
 ) {
     OutlinedButton(
         { onClick() },
@@ -42,7 +45,7 @@ fun ServifyOutlinedButton(
         shape = RoundedCornerShape(Theme.radius.large),
         enabled = enabled
     ) {
-        Text(text, style = Theme.typography.titleLarge, fontWeight = FontWeight.Bold)
+        Text(text, style = Theme.typography.titleLarge, fontWeight = FontWeight.Bold, fontSize = fontSize)
         AnimatedVisibility(visible = hasIcon) {
             Icon(painter = iconPainter!!, contentDescription = null)
         }

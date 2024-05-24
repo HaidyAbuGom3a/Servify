@@ -23,11 +23,18 @@ import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
 import org.haidy.servify.presentation.screens.home.composable.ItemService
+import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.sum
 
 @Composable
 fun ServicesScreen(viewModel: ServicesViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
+    EffectHandler(effects = viewModel.effect) { effect, navController ->
+        when(effect){
+            is ServicesUiEffect.NavigateToServiceDetail -> TODO()
+            ServicesUiEffect.NavigateUp -> navController.popBackStack()
+        }
+    }
     ServicesContent(state = state, listener = viewModel)
 }
 
@@ -44,7 +51,9 @@ fun ServicesContent(state: ServicesUiState, listener: ServicesInteractionListene
     ) { paddingValues ->
 
         LazyVerticalGrid(
-            modifier = Modifier.fillMaxSize().background(Theme.colors.background),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Theme.colors.background),
             columns = GridCells.Fixed(4),
             contentPadding = PaddingValues(vertical = 32.dp, horizontal = 8.dp).sum(
                 otherPaddingValues = paddingValues

@@ -97,5 +97,24 @@ private val specialists = listOf(
         ),
         imageUrl = "https://www.shutterstock.com/image-photo/profession-carpentry-woodwork-people-concept-600nw-559842814.jpg"
     ),
-
+    Specialist(
+        name = "Waleed",
+        location = Location(
+            latitude = 31.425991,
+            longitude = 31.654069,
+            country = "Egypt",
+            governorate = "New Damietta"
+        ),
+        id = 1.toString(),
+        rating = 5.0,
+        service = Service(
+            id = 1.toString(),
+            discount = 0.10,
+            imageUrl = "https://www.neit.edu/wp-content/uploads/2023/12/image-2.png",
+            description = "This is air conditioning work",
+            name = "Air Conditioning",
+            status = true
+        ),
+        imageUrl = "https://www.shutterstock.com/image-photo/technician-service-cleaning-air-conditioner-600nw-1498805081.jpg"
+    )
 )
