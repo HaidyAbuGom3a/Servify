@@ -52,7 +52,7 @@ class FeedbackViewModel @Inject constructor(
     }
 
     override fun onClickBackIcon() {
-        sendNewEffect(FeedbackUiEffect.ShowSuccessMessage)
+        sendNewEffect(FeedbackUiEffect.NavigateUp)
     }
 
     override fun onClickStar(index: Int) {

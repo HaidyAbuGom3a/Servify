@@ -52,7 +52,7 @@ fun FeedbackContent(state: FeedbackUiState, listener: FeedbackInteractionListene
     Scaffold(
         topBar = {
             ServifyAppBar(
-                onNavigateUp = { },
+                onNavigateUp = { listener.onClickBackIcon() },
                 isBackIconVisible = true,
                 title = Resources.strings.feedback
             )
