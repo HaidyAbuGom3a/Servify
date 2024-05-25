@@ -13,6 +13,10 @@ class FakeSpecialistsRepository : ISpecialistRepository {
     override suspend fun getNearestSpecialists(): List<Specialist> {
         return specialists.filter { it.location.governorate == "New Damietta" }
     }
+
+    override suspend fun getSpecialist(id: String): Specialist {
+        return specialists.first { it.id == id }
+    }
 }
 
 
@@ -45,10 +49,10 @@ private val specialists = listOf(
             country = "Egypt",
             governorate = "Damietta"
         ),
-        id = 1.toString(),
+        id = 2.toString(),
         rating = 5.0,
         service = Service(
-            id = 1.toString(),
+            id = 2.toString(),
             discount = 0.10,
             imageUrl = "https://www.neit.edu/wp-content/uploads/2023/12/image-2.png",
             description = "This is air conditioning work",
@@ -65,10 +69,10 @@ private val specialists = listOf(
             country = "Egypt",
             governorate = "New Damietta"
         ),
-        id = 1.toString(),
+        id = 3.toString(),
         rating = 4.5,
         service = Service(
-            id = 1.toString(),
+            id = 3.toString(),
             discount = 0.10,
             imageUrl = "https://www.shutterstock.com/image-photo/portrait-confident-male-carpenter-standing-600nw-2268295179.jpg",
             description = "This is carpentry work",
@@ -85,10 +89,10 @@ private val specialists = listOf(
             country = "Egypt",
             governorate = "New Damietta"
         ),
-        id = 1.toString(),
+        id = 4.toString(),
         rating = 4.5,
         service = Service(
-            id = 1.toString(),
+            id = 3.toString(),
             discount = 0.10,
             imageUrl = "https://www.shutterstock.com/image-photo/portrait-confident-male-carpenter-standing-600nw-2268295179.jpg",
             description = "This is carpentry work",
@@ -105,10 +109,10 @@ private val specialists = listOf(
             country = "Egypt",
             governorate = "New Damietta"
         ),
-        id = 1.toString(),
+        id = 5.toString(),
         rating = 5.0,
         service = Service(
-            id = 1.toString(),
+            id = 2.toString(),
             discount = 0.10,
             imageUrl = "https://www.neit.edu/wp-content/uploads/2023/12/image-2.png",
             description = "This is air conditioning work",

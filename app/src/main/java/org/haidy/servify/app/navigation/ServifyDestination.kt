@@ -20,4 +20,5 @@ object ServifyDestination {
     const val VERIFIED = "Verified"
     const val SERVICES = "Services"
     const val SPECIALISTS = "Specialists"
+    const val FEEDBACK = "Feedback"
 }

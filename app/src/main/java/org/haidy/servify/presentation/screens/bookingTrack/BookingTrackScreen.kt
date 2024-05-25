@@ -22,11 +22,20 @@ import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
 import org.haidy.servify.presentation.screens.bookingTrack.composable.ItemOrder
+import org.haidy.servify.presentation.screens.feedback.navigateToFeedback
+import org.haidy.servify.presentation.util.EffectHandler
 
 
 @Composable
 fun BookingTrackScreen(viewModel: BookingTrackViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
+    EffectHandler(effects = viewModel.effect) { effect, navController ->
+        when(effect){
+            is BookingTrackUiEffect.NavigateToFeedback -> navController.navigateToFeedback(effect.specialistId)
+            is BookingTrackUiEffect.NavigateToScheduling -> TODO()
+            BookingTrackUiEffect.NavigateUp -> navController.popBackStack()
+        }
+    }
     BookingTrackContent(state, viewModel)
 }
 

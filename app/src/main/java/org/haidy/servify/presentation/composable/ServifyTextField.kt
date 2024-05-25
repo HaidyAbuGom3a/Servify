@@ -53,7 +53,8 @@ fun ServifyTextField(
     trailingIconEnabled: Boolean = onTrailingIconClick != {},
     iconTint: Color? = null,
     cursorColor: Color = Theme.colors.accent100,
-    outlinedTextFieldDefaults: TextFieldColors = outlinedTextFieldColorDefaults(cursorColor)
+    outlinedTextFieldDefaults: TextFieldColors = outlinedTextFieldColorDefaults(cursorColor),
+    minHeight: Int = 48
 
 ) {
     Column(
@@ -63,7 +64,7 @@ fun ServifyTextField(
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 48.dp, max = 160.dp),
+                .heightIn(min = minHeight.dp, max = if(minHeight > 160) minHeight.dp else 160.dp),
             value = text,
             placeholder = {
                 Text(

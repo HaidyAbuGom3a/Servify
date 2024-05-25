@@ -17,8 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VerifyEmailViewModel @Inject constructor(
-    @JvmSuppressWildcards private val manageAuth: AuthUseCase,
-    @JvmSuppressWildcards private val manageUser: UserUseCase,
+    private val manageAuth: AuthUseCase,
+    private val manageUser: UserUseCase,
     savedStateHandle: SavedStateHandle
 ) :
     BaseViewModel<VerifyEmailUiState, VerifyEmailUiEffect>(VerifyEmailUiState()),

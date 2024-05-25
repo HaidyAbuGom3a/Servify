@@ -109,4 +109,23 @@ interface IStringResources {
     val reschedule: String
     val rebook: String
     val addRating: String
+    val feedback: String
+    val howWouldYouRateExperienceAndService: String
+    val poor: String
+    val fair: String
+    val average: String
+    val good: String
+    val excellent: String
+    val bookingCancellation: String
+    val whyDoYouWantToCancel: String
+    val haveYouExperiencedChanges: String
+    val didYouEncounterProblemWithService: String
+    val haveYouDiscoveredBetterOptions: String
+    val unexpectedFinancialProblems: String
+    val travelPlans: String
+    val anotherReason: String
+    val addReasonHere: String
+    val writeFeedbackHere: String
+    val submitFeedback: String
+    val feedbackSubmittedSuccessfully: String
 }

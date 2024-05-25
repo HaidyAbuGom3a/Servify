@@ -42,8 +42,8 @@ class BookingTrackViewModel @Inject constructor(private val ordersUseCase: Order
         sendNewEffect(BookingTrackUiEffect.NavigateToFeedback(specialistId))
     }
 
-    override fun onClickReschedule(orderId: String) {
-        sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(orderId))
+    override fun onClickReschedule(specialistId: String) {
+        sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(specialistId))
     }
 
     override fun onClickCancel(orderId: String) {
@@ -51,7 +51,7 @@ class BookingTrackViewModel @Inject constructor(private val ordersUseCase: Order
     }
 
     override fun onClickReBook(specialistId: String) {
-        //rebook order
+       sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(specialistId))
     }
 
     override fun onClickBackIcon() {
