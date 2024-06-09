@@ -21,4 +21,5 @@ object ServifyDestination {
     const val SERVICES = "Services"
     const val SPECIALISTS = "Specialists"
     const val FEEDBACK = "Feedback"
+    const val BOOKING_CANCELLATION: String = " BookingCancellation"
 }

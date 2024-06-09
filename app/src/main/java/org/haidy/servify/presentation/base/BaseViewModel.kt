@@ -2,8 +2,6 @@ package org.haidy.servify.presentation.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import org.haidy.servify.domain.utils.AuthorizationException
-import org.haidy.servify.domain.utils.InternetException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,9 +11,13 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.launch
+import org.haidy.servify.domain.utils.AuthorizationException
+import org.haidy.servify.domain.utils.InternetException
 
 open class BaseViewModel<S, E>(state: S) : ViewModel(){
 
@@ -36,6 +38,24 @@ open class BaseViewModel<S, E>(state: S) : ViewModel(){
             onSuccess(result)
         }
     }
+
+    protected fun <T> tryToCollect(
+        function: suspend () -> Flow<T>,
+        onNewValue: (T) -> Unit,
+        onError: (Exception) -> Unit,
+        inScope: CoroutineScope = viewModelScope,
+    ): Job {
+        return inScope.launch(Dispatchers.IO) {
+            try {
+                function().distinctUntilChanged().collectLatest {
+                    onNewValue(it)
+                }
+            } catch (e: Exception) {
+                onError(e)
+            }
+        }
+    }
+
 
     private fun runWithErrorCheck(
         onError: (ErrorState) -> Unit,

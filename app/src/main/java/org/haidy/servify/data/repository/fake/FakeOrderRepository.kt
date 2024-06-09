@@ -1,5 +1,9 @@
 package org.haidy.servify.data.repository.fake
 
+import com.google.firestore.v1.StructuredQuery.Order
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import org.haidy.servify.domain.model.Location
 import org.haidy.servify.domain.model.OrderStatus
 import org.haidy.servify.domain.model.Service
@@ -9,16 +13,24 @@ import org.haidy.servify.domain.repository.IOrderRepository
 import javax.inject.Inject
 
 class FakeOrderRepository @Inject constructor(): IOrderRepository {
-    override suspend fun getCancelledOrders(): List<ServiceOrder> {
-        return orders.filter { it.status == OrderStatus.CANCELLED }
+    override suspend fun getCancelledOrders(): Flow<List<ServiceOrder>> {
+        return cancelledFlow
     }
 
-    override suspend fun getUpcomingOrders(): List<ServiceOrder> {
-        return orders.filter { it.status == OrderStatus.UPCOMING }
+    override suspend fun getUpcomingOrders(): Flow<List<ServiceOrder>> {
+        return upcomingFlow
     }
 
-    override suspend fun getCompletedOrders(): List<ServiceOrder> {
-        return orders.filter { it.status == OrderStatus.COMPLETED }
+    override suspend fun getCompletedOrders(): Flow<List<ServiceOrder>> {
+        return completedFlow
+    }
+
+    override suspend fun cancelOrder(orderId: String) {
+        upcomingFlow.update {
+            it.toMutableList().filterNot { item -> item.id == orderId }
+        }
+        val order = orders.find { it.id == orderId }!!.copy(status = OrderStatus.CANCELLED)
+        cancelledFlow.update { it + listOf(order) }
     }
 }
 
@@ -75,7 +87,7 @@ private val orders = listOf(
         timeStamp = 1715517330
     ),
     ServiceOrder(
-        "3",
+        "4",
         specialist = Specialist(
             name = "Waleed",
             location = Location(
@@ -128,3 +140,9 @@ private val orders = listOf(
     ),
 
 )
+
+private val upcomingFlow = MutableStateFlow(orders.filter { it.status == OrderStatus.UPCOMING })
+
+private val cancelledFlow = MutableStateFlow(orders.filter { it.status == OrderStatus.CANCELLED })
+
+private val completedFlow = MutableStateFlow(orders.filter { it.status == OrderStatus.COMPLETED })

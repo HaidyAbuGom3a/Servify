@@ -130,4 +130,5 @@ data class ArabicEG(
     override val whyDoYouWantToCancel: String = "ليه عايز تلغي الحجز مع المتخصص ده؟",
     override val writeFeedbackHere: String = "اكتب ملاحظاتك هنا",
     override val feedbackSubmittedSuccessfully: String = "ملاحظاتك وصلت بنجاح",
+    override val orderCancelled: String = "الحجز اتلغي بنجاح",
 ) : IStringResources

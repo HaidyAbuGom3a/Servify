@@ -2,6 +2,7 @@ package org.haidy.servify.presentation.screens.bookingTrack
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.haidy.servify.domain.usecase.OrdersUseCase
@@ -19,17 +20,19 @@ class BookingTrackViewModel @Inject constructor(private val ordersUseCase: Order
 
     private fun getData() {
         viewModelScope.launch {
-            tryToExecute(
+            tryToCollect(
                 { ordersUseCase.getUpcomingOrders() },
-                { upcoming -> _state.update { it.copy(upcomingOrders = upcoming) } },
+                { upcoming ->
+                    _state.update { it.copy(upcomingOrders = upcoming) }
+                },
                 {}
             )
-            tryToExecute(
+            tryToCollect(
                 { ordersUseCase.getCancelledOrders() },
                 { cancelled -> _state.update { it.copy(cancelledOrders = cancelled) } },
                 {}
             )
-            tryToExecute(
+            tryToCollect(
                 { ordersUseCase.getCompletedOrders() },
                 { completed -> _state.update { it.copy(completedOrders = completed) } },
                 {}
@@ -47,7 +50,7 @@ class BookingTrackViewModel @Inject constructor(private val ordersUseCase: Order
     }
 
     override fun onClickCancel(orderId: String) {
-        //cancel the order
+        sendNewEffect(BookingTrackUiEffect.NavigateToBookingCancellation(orderId))
     }
 
     override fun onClickReBook(specialistId: String) {

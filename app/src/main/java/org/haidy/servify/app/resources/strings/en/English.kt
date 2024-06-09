@@ -130,4 +130,5 @@ data class English(
     override val whyDoYouWantToCancel: String = "Why do you want to cancel this specialist's reservation?",
     override val writeFeedbackHere: String = "Write feedback here",
     override val feedbackSubmittedSuccessfully: String = "Feedback submitted successfully",
+    override val orderCancelled: String = "Order Cancelled!"
 ) : IStringResources

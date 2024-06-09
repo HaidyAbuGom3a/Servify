@@ -128,4 +128,5 @@ interface IStringResources {
     val writeFeedbackHere: String
     val submitFeedback: String
     val feedbackSubmittedSuccessfully: String
+    val orderCancelled: String
 }

@@ -11,6 +11,7 @@ import org.haidy.servify.presentation.screens.signup.signupScreenRoute
 import org.haidy.servify.app.LocalNavController
 import org.haidy.servify.app.theme.localThemeMode
 import org.haidy.servify.presentation.screens.addPhoto.addPhotoRoute
+import org.haidy.servify.presentation.screens.bookingCancellation.bookingCancellationRoute
 import org.haidy.servify.presentation.screens.bookingTrack.bookingTrackRoute
 import org.haidy.servify.presentation.screens.feedback.feedBackRoute
 import org.haidy.servify.presentation.screens.language.languageScreenRoute
@@ -50,5 +51,6 @@ fun ServifyNavGraph(startDestination: String) {
         supportRoute()
         servicesRoute()
         feedBackRoute()
+        bookingCancellationRoute()
     }
 }

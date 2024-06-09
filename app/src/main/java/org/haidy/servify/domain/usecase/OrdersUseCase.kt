@@ -12,4 +12,8 @@ class OrdersUseCase @Inject constructor(
     suspend fun getCompletedOrders() = ordersRepo.getCompletedOrders()
 
     suspend fun getCancelledOrders() = ordersRepo.getCancelledOrders()
+
+    suspend fun cancelOrder(orderId: String){
+        ordersRepo.cancelOrder(orderId)
+    }
 }
