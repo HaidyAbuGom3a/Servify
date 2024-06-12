@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import kotlinx.coroutines.launch
+import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -34,8 +35,9 @@ fun BookingTabRow(pagerState: PagerState) {
             val isSelected = pagerState.currentPage == index
             val textColor =
                 if (isSelected) Theme.colors.accent100 else Theme.colors.accent200.copy(alpha = 0.7f)
+            val title = tab.getTitle(Resources.languageCode.value)
             Tab(
-                text = { Text(tab.title, color = textColor) },
+                text = { Text(title, color = textColor) },
                 selected = pagerState.currentPage == index,
                 onClick = {
                     scope.launch {
