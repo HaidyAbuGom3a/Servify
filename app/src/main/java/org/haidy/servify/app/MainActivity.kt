@@ -18,7 +18,6 @@ import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.app.utils.CallbackManagerProvider
 import org.haidy.servify.app.utils.ThemeMode
 import org.haidy.servify.app.utils.getIsDarkTheme
-import org.haidy.servify.presentation.screens.location.LocationScreen
 
 
 @AndroidEntryPoint

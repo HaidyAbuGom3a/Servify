@@ -22,6 +22,7 @@ import org.haidy.servify.app.LocalPaddingValues
 import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
+import org.haidy.servify.presentation.screens.bookingAppointment.navigateToBookingAppointment
 import org.haidy.servify.presentation.screens.bookingCancellation.navigateToBookingCancellation
 import org.haidy.servify.presentation.screens.bookingTrack.composable.ItemOrder
 import org.haidy.servify.presentation.screens.feedback.navigateToFeedback
@@ -35,7 +36,7 @@ fun BookingTrackScreen(viewModel: BookingTrackViewModel = hiltViewModel()) {
     EffectHandler(effects = viewModel.effect) { effect, navController ->
         when (effect) {
             is BookingTrackUiEffect.NavigateToFeedback -> navController.navigateToFeedback(effect.specialistId)
-            is BookingTrackUiEffect.NavigateToScheduling -> TODO()
+            is BookingTrackUiEffect.NavigateToScheduling -> navController.navigateToBookingAppointment(effect.specialistId, effect.orderId)
             BookingTrackUiEffect.NavigateUp -> navController.popBackStack()
             is BookingTrackUiEffect.NavigateToBookingCancellation -> navController.navigateToBookingCancellation(
                 effect.orderId

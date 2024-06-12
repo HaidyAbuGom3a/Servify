@@ -1,5 +1,6 @@
 package org.haidy.servify.presentation.util
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
@@ -18,6 +19,8 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Dp
+import java.text.SimpleDateFormat
+import java.util.Date
 
 fun DrawScope.drawIndicator(
     x: Float,
@@ -78,3 +81,18 @@ fun Modifier.bottomBorder(strokeWidth: Dp, color: Color, isVisible: Boolean = tr
     }
 )
 
+@SuppressLint("SimpleDateFormat")
+fun Long.toTimeString(): String {
+    val formatter = SimpleDateFormat("hh:mm aa")
+    formatter.timeZone = java.util.TimeZone.getDefault()
+    val date = Date(this * 1000)
+    return formatter.format(date)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun Long.toDateString(): String {
+    val formatter = SimpleDateFormat("dd/MM/yyyy")
+    formatter.timeZone = java.util.TimeZone.getDefault()
+    val date = Date(this * 1000)
+    return formatter.format(date)
+}

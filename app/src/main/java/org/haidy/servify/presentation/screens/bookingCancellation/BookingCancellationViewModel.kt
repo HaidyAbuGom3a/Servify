@@ -1,6 +1,5 @@
 package org.haidy.servify.presentation.screens.bookingCancellation
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +18,7 @@ class BookingCancellationViewModel @Inject constructor(
     BookingCancellationUiState()
 ), BookingCancellationInteractionListener {
 
-    val args = BookingCancellationArgs(savedStateHandle)
+    private val args = BookingCancellationArgs(savedStateHandle)
 
     override fun onReasonChanged(reason: String) {
         _state.update {

@@ -110,7 +110,7 @@ fun ItemOrder(
                     ServifyButton(
                         onClick = {
                             when (order.status) {
-                                OrderStatus.UPCOMING -> listener.onClickReschedule(order.specialist.id)
+                                OrderStatus.UPCOMING -> listener.onClickReschedule(order.specialist.id, order.id)
                                 OrderStatus.COMPLETED -> listener.onClickAddRating(order.specialist.id)
                                 else -> {}
                             }

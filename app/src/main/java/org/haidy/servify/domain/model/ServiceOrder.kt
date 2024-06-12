@@ -5,7 +5,9 @@ data class ServiceOrder(
     val serviceName: String,
     val specialist: Specialist,
     val timeStamp: Long,
-    val status: OrderStatus
+    val status: OrderStatus,
+    val totalPrice: String,
+    val requiredTasks: String
 )
 
 enum class OrderStatus {

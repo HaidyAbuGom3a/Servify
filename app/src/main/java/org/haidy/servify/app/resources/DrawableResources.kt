@@ -46,6 +46,8 @@ data class DrawableResources(
     val filledStartIcon: Int = R.drawable.filled_start_icon,
     val directionIcon: Int = R.drawable.direction_icon,
     val walkIcon: Int = R.drawable.walk_icon,
+    val arrowDropUpIcon: Int= R.drawable.arrow_drop_up_icon,
+    val arrowDropDownIcon: Int = R.drawable.arrow_drop_down_icon
 )
 
 val DrawableDarkResources = DrawableResources(

@@ -2,7 +2,6 @@ package org.haidy.servify.presentation.screens.bookingTrack
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.haidy.servify.domain.usecase.OrdersUseCase
@@ -45,8 +44,8 @@ class BookingTrackViewModel @Inject constructor(private val ordersUseCase: Order
         sendNewEffect(BookingTrackUiEffect.NavigateToFeedback(specialistId))
     }
 
-    override fun onClickReschedule(specialistId: String) {
-        sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(specialistId))
+    override fun onClickReschedule(specialistId: String, orderId: String) {
+        sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(specialistId, orderId))
     }
 
     override fun onClickCancel(orderId: String) {
@@ -54,7 +53,7 @@ class BookingTrackViewModel @Inject constructor(private val ordersUseCase: Order
     }
 
     override fun onClickReBook(specialistId: String) {
-       sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(specialistId))
+       sendNewEffect(BookingTrackUiEffect.NavigateToScheduling(specialistId, "_"))
     }
 
     override fun onClickBackIcon() {

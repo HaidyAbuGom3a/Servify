@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import org.haidy.servify.R
+import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 
 
@@ -31,13 +31,13 @@ fun ServifyDropDownMenu(
     options: List<String>,
     hint: String,
     selectedText: String,
-    modifier: Modifier = Modifier.fillMaxWidth(),
+    modifier: Modifier = Modifier,
     hintColor: Color = Theme.colors.dark300.copy(alpha = 0.7f),
     errorMessage: String = ""
 ) {
     var isExpanded by remember { mutableStateOf(false) }
-    val iconDrawable = if (isExpanded) R.drawable.arrow_drop_up_icon else
-        R.drawable.arrow_drop_down_icon
+    val iconDrawable = if (isExpanded) Resources.images.arrowDropUpIcon else
+        Resources.images.arrowDropDownIcon
     Box(
         modifier.fillMaxWidth()
     ) {

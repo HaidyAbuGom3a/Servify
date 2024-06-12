@@ -129,4 +129,31 @@ interface IStringResources {
     val submitFeedback: String
     val feedbackSubmittedSuccessfully: String
     val orderCancelled: String
+    val bookAppointment: String
+    val requiredTasks: String
+    val writeHere: String
+    val day: String
+    val time: String
+    val thePrice: String
+    val am: String
+    val pm: String
+    val message: String
+    val addService: String
+    val chooseService: String
+    val addPaymentMethod: String
+    val addCard: String
+    val paymentOption: String
+    val cards: String
+    val cash: String
+    val cardHolder: String
+    val expires: String
+    val paymentSuccess: String
+    val bookingSuccessful: String
+    val totalPay: String
+    val proceed: String
+    val done: String
+    val save: String
+    val viewBooking: String
+    val price: String
+    val bookNow: String
 }

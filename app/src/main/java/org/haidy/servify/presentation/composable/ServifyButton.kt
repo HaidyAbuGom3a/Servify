@@ -1,9 +1,9 @@
 package org.haidy.servify.presentation.composable
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,14 +36,15 @@ fun ServifyButton(
     onClick: () -> Unit,
     text: String,
     iconPainter: Painter? = null,
-    modifier: Modifier = Modifier,
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
     containerColor: Color = Theme.colors.accent100,
     contentColor: Color = Color.White,
     enabled: Boolean = true,
     elevation: ButtonElevation = ButtonDefaults.buttonElevation(),
     fontWeight: FontWeight = FontWeight.Bold,
     fontSize: TextUnit = 16.sp,
-    isLoading: Boolean = false
+    isLoading: Boolean = false,
+    buttonRadius: Dp = Theme.radius.large
 ) {
     Button(
         { onClick() },
@@ -53,7 +55,7 @@ fun ServifyButton(
             disabledContainerColor = Theme.colors.grey100,
             disabledContentColor = Theme.colors.dark200,
         ),
-        shape = RoundedCornerShape(Theme.radius.large),
+        shape = RoundedCornerShape(buttonRadius),
         enabled = enabled,
         elevation = elevation
     ) {
