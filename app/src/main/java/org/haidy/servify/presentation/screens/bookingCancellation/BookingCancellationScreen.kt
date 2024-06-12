@@ -66,7 +66,10 @@ fun BookingCancellationContent(
             )
         }
     ) { paddingValues ->
-        LazyColumn(contentPadding = paddingValues) {
+        LazyColumn(
+            contentPadding = paddingValues, modifier = Modifier
+                .background(Theme.colors.background)
+        ) {
             item {
                 Text(
                     text = Resources.strings.whyDoYouWantToCancel,

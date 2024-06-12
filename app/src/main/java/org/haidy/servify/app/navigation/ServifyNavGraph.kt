@@ -16,6 +16,7 @@ import org.haidy.servify.presentation.screens.language.languageScreenRoute
 import org.haidy.servify.presentation.screens.location.locationRoute
 import org.haidy.servify.presentation.screens.login.loginScreenRoute
 import org.haidy.servify.presentation.screens.onBoarding.onBoardingRoute
+import org.haidy.servify.presentation.screens.payment.addCard.addCardRoute
 import org.haidy.servify.presentation.screens.profile.profileRoute
 import org.haidy.servify.presentation.screens.services.servicesRoute
 import org.haidy.servify.presentation.screens.settings.settingsRoute
@@ -53,5 +54,6 @@ fun ServifyNavGraph(startDestination: String) {
         feedBackRoute()
         bookingCancellationRoute()
         bookingAppointmentRoute()
+        addCardRoute()
     }
 }

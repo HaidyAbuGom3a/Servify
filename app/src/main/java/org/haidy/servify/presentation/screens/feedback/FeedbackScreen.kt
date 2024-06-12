@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -66,7 +67,7 @@ fun FeedbackContent(state: FeedbackUiState, listener: FeedbackInteractionListene
         }
     ) { paddingValues ->
         LazyColumn(
-            modifier = Modifier.padding(paddingValues).background(Theme.colors.background),
+            modifier = Modifier.fillMaxSize().padding(paddingValues).background(Theme.colors.background),
             contentPadding = PaddingValues(vertical = 32.dp, horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

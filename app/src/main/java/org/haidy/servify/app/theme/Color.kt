@@ -25,6 +25,7 @@ data class Colors(
     val background: Color,
     val blue: Color,
     val card: Color,
+    val cardGrey: Color,
     val contrast: Color,
     val drawer: Color
 )
@@ -52,6 +53,7 @@ val LightColors = Colors(
     background = Color(0xFFFFFFFF),
     blue = Color(0xFF4980FF),
     card = Color(0xFFFFFFFF),
+    cardGrey = Color(0xFFD9D9D9),
     contrast = Color(0xFF000000),
     drawer = Color(0xFF602BA3),
 )
@@ -79,6 +81,7 @@ val DarkColors = Colors(
     background = Color(0xFF262626),
     blue = Color(0xFF6ECBF9),
     card = Color(0xFF333333),
+    cardGrey = Color(0xFF4D5151),
     contrast = Color(0xFFFFFFFF),
     drawer = Color(0xFF602BA3),
 )

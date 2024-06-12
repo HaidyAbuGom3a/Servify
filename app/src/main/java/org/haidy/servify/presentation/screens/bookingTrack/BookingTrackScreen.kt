@@ -66,15 +66,13 @@ fun BookingTrackContent(state: BookingTrackUiState, listener: BookingTrackIntera
         HorizontalPager(
             pageCount = Tabs.values().size,
             state = pagerState,
-            modifier = Modifier
-                .padding(it.sum(otherPaddingValues = LocalPaddingValues.current))
         ) { index ->
             LazyColumn(
                 Modifier
                     .fillMaxSize()
                     .background(Theme.colors.background)
                     .padding(horizontal = 16.dp),
-                contentPadding = PaddingValues(vertical = 16.dp),
+                contentPadding = PaddingValues(vertical = 16.dp).sum(otherPaddingValues = it.sum(otherPaddingValues = LocalPaddingValues.current)),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 when (index) {

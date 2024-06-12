@@ -36,7 +36,8 @@ class HomeViewModel @Inject constructor(
 
     private fun getOffers() {
         tryToExecute(
-            {   _state.update { it.copy(isLoading = true) }
+            {
+                _state.update { it.copy(isLoading = true) }
                 servicesUseCase.getAllOffers()
             },
             { offers ->
@@ -48,7 +49,8 @@ class HomeViewModel @Inject constructor(
 
     private fun getUser() {
         tryToExecute(
-            {   _state.update { it.copy(isLoading = true) }
+            {
+                _state.update { it.copy(isLoading = true) }
                 userUseCase.getUserProfile()
             },
             { user ->
@@ -83,10 +85,12 @@ class HomeViewModel @Inject constructor(
 
     override fun onClickLogout() {
         tryToExecute(
-            {   _state.update { it.copy(isLoading = true) }
+            {
+                _state.update { it.copy(isLoading = true) }
                 authUseCase.logout()
             },
-            { _state.update { it.copy(isLoading = false) }
+            {
+                _state.update { it.copy(isLoading = false) }
                 sendNewEffect(HomeUiEffect.NavigateToLogin)
             },
             { _state.update { it.copy(isLoading = false) } }
@@ -99,5 +103,13 @@ class HomeViewModel @Inject constructor(
 
     override fun onClickShowAllSpecialists() {
         sendNewEffect(HomeUiEffect.NavigateToBestSpecialists)
+    }
+
+    override fun onClickAddService() {
+        sendNewEffect(HomeUiEffect.NavigateToAddService)
+    }
+
+    override fun onClickAddCard() {
+        sendNewEffect(HomeUiEffect.NavigateToAddCard)
     }
 }

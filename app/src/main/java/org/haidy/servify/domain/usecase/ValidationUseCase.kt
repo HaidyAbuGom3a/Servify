@@ -3,6 +3,7 @@ package org.haidy.servify.domain.usecase
 import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.utils.LocalizationManager
 import org.haidy.servify.domain.model.FormValidation
+import org.haidy.servify.domain.model.PaymentCardType
 import javax.inject.Inject
 
 
@@ -92,9 +93,58 @@ class ValidationUseCase @Inject constructor() {
         return FormValidation(true)
     }
 
+    fun validateCardNumber(cardNumber: String): PaymentCardType {
+        val sanitizedCardNumber = cardNumber.replace("\\s".toRegex(), "")
+
+        return when {
+            sanitizedCardNumber.isVisa() -> PaymentCardType.VISA
+            sanitizedCardNumber.isMasterCard() -> PaymentCardType.MASTER_CARD
+            sanitizedCardNumber.isAmericanExpress() -> PaymentCardType.AMERICAN_EXPRESS
+            sanitizedCardNumber.isMeeza() -> PaymentCardType.MEEZA
+            else -> PaymentCardType.UNKNOWN
+        }
+    }
+
+    private fun String.isVisa(): Boolean {
+        return this.matches(VISA_REGEX.toRegex()) && isValidLuhn(this)
+    }
+
+    private fun String.isMasterCard(): Boolean {
+        return this.matches(MASTER_REGEX.toRegex()) && isValidLuhn(this)
+    }
+
+    private fun String.isAmericanExpress(): Boolean {
+        return this.matches(AMEX_REGEX.toRegex()) && isValidLuhn(this)
+    }
+
+    private fun String.isMeeza(): Boolean {
+        return this.matches(MEEZA_REGEX.toRegex()) && isValidLuhn(this)
+    }
+
+    private fun isValidLuhn(cardNumber: String): Boolean {
+        var sum = 0
+        var alternate = false
+        for (i in cardNumber.length - 1 downTo 0) {
+            var n = cardNumber[i].toString().toInt()
+            if (alternate) {
+                n *= 2
+                if (n > 9) {
+                    n -= 9
+                }
+            }
+            sum += n
+            alternate = !alternate
+        }
+        return sum % 10 == 0
+    }
+
     companion object {
         const val EMAIL_REGEX = "^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})"
         const val PHONE_REGEX = "^(\\+201|01)[0-2,5]{1}[0-9]{8}$"
+        const val VISA_REGEX = "^4[0-9]{12}(?:[0-9]{3})?$"
+        const val MASTER_REGEX = "^5[1-5][0-9]{14}$"
+        const val MEEZA_REGEX = "^50(?:[0-9]{14}|[0-9]{12})$"
+        const val AMEX_REGEX = "^3[47][0-9]{13}$"
     }
 
 }

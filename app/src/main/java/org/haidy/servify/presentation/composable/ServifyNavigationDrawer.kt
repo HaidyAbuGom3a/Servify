@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
@@ -121,6 +122,29 @@ fun ServifyNavigationDrawer(
                         },
                         text = Resources.strings.profile,
                         icon = painterResource(id = Resources.images.profileDrawerIcon),
+                        modifier = Modifier.padding(bottom = 24.dp)
+                    )
+                    DrawerItem(
+                        onClick = {
+                            scope.launch {
+                                drawerState.close()
+                            }
+                            listener.onClickAddService()
+                        },
+                        text = Resources.strings.addService,
+                        iconSize = 12.dp,
+                        icon = painterResource(id = Resources.images.plusIcon),
+                        modifier = Modifier.padding(bottom = 24.dp)
+                    )
+                    DrawerItem(
+                        onClick = {
+                            scope.launch {
+                                drawerState.close()
+                            }
+                            listener.onClickAddCard()
+                        },
+                        text = Resources.strings.addCard,
+                        icon = painterResource(id = Resources.images.addCardIcon),
                         modifier = Modifier.padding(bottom = 40.dp)
                     )
 
@@ -156,11 +180,12 @@ private fun DrawerItem(
     text: String,
     icon: Painter,
     modifier: Modifier = Modifier,
-    numOfNotifications: Int = 0
+    numOfNotifications: Int = 0,
+    iconSize:Dp = 16.dp
 ) {
     Row(modifier.noRippleEffect { onClick() }, verticalAlignment = Alignment.CenterVertically) {
         val tint = if (numOfNotifications > 0) Color.Unspecified else Color.White
-        Icon(icon, contentDescription = null, tint = tint)
+        Icon(icon, contentDescription = null, tint = tint, modifier = Modifier.size(iconSize))
         Text(
             text = text,
             style = Theme.typography.bodyLarge,

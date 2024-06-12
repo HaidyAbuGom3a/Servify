@@ -52,11 +52,11 @@ fun BookingAppointmentContent(
             ServifyAppBar(
                 onNavigateUp = { listener.onClickBackIcon() },
                 isBackIconVisible = true,
-                title = Resources.strings.booking
+                title = Resources.strings.bookAppointment
             )
         },
         bottomBar = {
-            Surface {
+            Surface(shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()

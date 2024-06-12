@@ -23,4 +23,5 @@ object ServifyDestination {
     const val FEEDBACK = "Feedback"
     const val BOOKING_CANCELLATION: String = "BookingCancellation"
     const val BOOKING_APPOINTMENT: String = "BookingAppointment"
+    const val ADD_CARD: String = "AddCard"
 }

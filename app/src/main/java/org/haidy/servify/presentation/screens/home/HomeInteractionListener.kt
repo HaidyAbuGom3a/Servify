@@ -7,4 +7,6 @@ interface HomeInteractionListener {
     fun onClickLogout()
     fun onClickShowAllServices()
     fun onClickShowAllSpecialists()
+    fun onClickAddService()
+    fun onClickAddCard()
 }

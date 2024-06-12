@@ -47,7 +47,12 @@ data class DrawableResources(
     val directionIcon: Int = R.drawable.direction_icon,
     val walkIcon: Int = R.drawable.walk_icon,
     val arrowDropUpIcon: Int= R.drawable.arrow_drop_up_icon,
-    val arrowDropDownIcon: Int = R.drawable.arrow_drop_down_icon
+    val arrowDropDownIcon: Int = R.drawable.arrow_drop_down_icon,
+    val visaLogo: Int = R.drawable.visa_logo,
+    val meezaLogo: Int = R.drawable.meeza_logo,
+    val masterCardLogo: Int = R.drawable.master_card_logo,
+    val americanExpressLogo: Int = R.drawable.amex_logo,
+    val addCardIcon: Int = R.drawable.add_card_icon
 )
 
 val DrawableDarkResources = DrawableResources(

@@ -52,6 +52,7 @@ import org.haidy.servify.presentation.screens.home.composable.ItemSection
 import org.haidy.servify.presentation.screens.home.composable.ItemService
 import org.haidy.servify.presentation.screens.login.navigateToLogin
 import org.haidy.servify.presentation.screens.onBoarding.composable.PagerIndicator
+import org.haidy.servify.presentation.screens.payment.addCard.navigateToAddCard
 import org.haidy.servify.presentation.screens.profile.navigateToProfile
 import org.haidy.servify.presentation.screens.services.navigateToServices
 import org.haidy.servify.presentation.screens.settings.navigateToSettings
@@ -75,6 +76,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
             HomeUiEffect.NavigateToLogin -> navController.navigateToLogin(true)
             HomeUiEffect.NavigateToBestSpecialists -> TODO()
             HomeUiEffect.NavigateToServices -> navController.navigateToServices()
+            HomeUiEffect.NavigateToAddCard -> navController.navigateToAddCard()
+            HomeUiEffect.NavigateToAddService -> TODO()
         }
 
     }
