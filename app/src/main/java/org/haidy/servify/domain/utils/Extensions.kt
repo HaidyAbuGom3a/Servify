@@ -4,9 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import com.bumptech.glide.Glide
+import org.haidy.servify.app.resources.Resources
+import org.haidy.servify.app.utils.LanguageCode
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 fun Context.getUriAsFile(uri: Uri): File? {
     return try {
@@ -23,7 +26,12 @@ fun Context.getUriAsFile(uri: Uri): File? {
 
 @SuppressLint("SimpleDateFormat")
 fun Long.toDateString(): String {
-    val formatter = SimpleDateFormat("h aa - MMM dd, yyyy")
+    val locale =
+        if (Resources.languageCode.value == LanguageCode.AR || Resources.languageCode.value == LanguageCode.EG) Locale(
+            "ar"
+        ) else Locale.getDefault()
+
+    val formatter = SimpleDateFormat("h aa - MMM dd, yyyy", locale)
     val date = Date(this * 1000)
     return formatter.format(date)
 }
