@@ -22,6 +22,7 @@ import org.haidy.servify.presentation.screens.profile.profileRoute
 import org.haidy.servify.presentation.screens.services.servicesRoute
 import org.haidy.servify.presentation.screens.settings.settingsRoute
 import org.haidy.servify.presentation.screens.signup.signupScreenRoute
+import org.haidy.servify.presentation.screens.specialists.bestSpecialistsRoute
 import org.haidy.servify.presentation.screens.support.supportRoute
 import org.haidy.servify.presentation.screens.updatePassword.updatePasswordRoute
 import org.haidy.servify.presentation.screens.verified.verifiedRoute
@@ -57,5 +58,6 @@ fun ServifyNavGraph(startDestination: String) {
         bookingAppointmentRoute()
         addCardRoute()
         addPaymentMethodRoute()
+        bestSpecialistsRoute()
     }
 }

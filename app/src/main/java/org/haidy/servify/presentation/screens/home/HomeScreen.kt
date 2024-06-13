@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -46,18 +48,22 @@ import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyLoading
 import org.haidy.servify.presentation.composable.ServifyNavigationDrawer
 import org.haidy.servify.presentation.composable.ServifyTextField
+import org.haidy.servify.presentation.screens.bookingAppointment.navigateToBookingAppointment
 import org.haidy.servify.presentation.screens.home.composable.CarouselAutoPlayHandler
 import org.haidy.servify.presentation.screens.home.composable.HomeTopBar
 import org.haidy.servify.presentation.screens.home.composable.ItemSection
 import org.haidy.servify.presentation.screens.home.composable.ItemService
+import org.haidy.servify.presentation.screens.home.composable.ItemSpecialist
 import org.haidy.servify.presentation.screens.login.navigateToLogin
 import org.haidy.servify.presentation.screens.onBoarding.composable.PagerIndicator
 import org.haidy.servify.presentation.screens.payment.addCard.navigateToAddCard
 import org.haidy.servify.presentation.screens.profile.navigateToProfile
 import org.haidy.servify.presentation.screens.services.navigateToServices
 import org.haidy.servify.presentation.screens.settings.navigateToSettings
+import org.haidy.servify.presentation.screens.specialists.navigateToBestSpecialists
 import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.OnLifecycleEvent
+import org.haidy.servify.presentation.util.sum
 
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
@@ -74,10 +80,14 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
             is HomeUiEffect.NavigateToSettings -> navController.navigateToSettings()
             is HomeUiEffect.NavigateToNotifications -> {}
             HomeUiEffect.NavigateToLogin -> navController.navigateToLogin(true)
-            HomeUiEffect.NavigateToBestSpecialists -> TODO()
+            HomeUiEffect.NavigateToBestSpecialists -> navController.navigateToBestSpecialists()
             HomeUiEffect.NavigateToServices -> navController.navigateToServices()
             HomeUiEffect.NavigateToAddCard -> navController.navigateToAddCard()
             HomeUiEffect.NavigateToAddService -> TODO()
+            is HomeUiEffect.NavigateToBookingAppointment -> navController.navigateToBookingAppointment(
+                effect.specialistId,
+                "_"
+            )
         }
 
     }
@@ -124,112 +134,129 @@ fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
             top = paddingValues.calculateTopPadding() + localPaddingValues.calculateTopPadding(),
             bottom = paddingValues.calculateBottomPadding() + localPaddingValues.calculateBottomPadding(),
         )
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Theme.colors.background)
-                .padding(overallPaddingValues)
+                .background(Theme.colors.background),
+            contentPadding = overallPaddingValues.sum(otherPaddingValues = PaddingValues(bottom = 16.dp))
         ) {
+            item {
+                ServifyTextField(
+                    text = "",
+                    onValueChange = {},
+                    hint = Resources.strings.search,
+                    readOnly = true,
+                    leadingPainter = painterResource(id = Resources.images.searchIcon),
+                    iconTint = Theme.colors.dark300.copy(alpha = 0.7f),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp, horizontal = 16.dp)
+                )
+            }
 
-            ServifyTextField(
-                text = "",
-                onValueChange = {},
-                hint = Resources.strings.search,
-                readOnly = true,
-                leadingPainter = painterResource(id = Resources.images.searchIcon),
-                iconTint = Theme.colors.dark300.copy(alpha = 0.7f),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp, horizontal = 16.dp)
-            )
+            item {
+                AnimatedVisibility(visible = state.offers.isNotEmpty()) {
+                    ItemSection(
+                        title = Resources.strings.offers,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            val pagerState = rememberPagerState()
+                            HorizontalPager(
+                                pageCount = state.offers.size,
+                                state = pagerState,
+                                contentPadding = PaddingValues(horizontal = 16.dp),
+                                pageSpacing = 16.dp
+                            ) { page ->
+                                Image(
+                                    painter = rememberAsyncImagePainter(model = state.offers[page]),
+                                    contentDescription = "",
+                                    modifier = Modifier
+                                        .height(150.dp)
+                                        .fillMaxWidth()
+                                        .clip(RoundedCornerShape(Theme.radius.medium)),
+                                    contentScale = ContentScale.Crop
+                                )
+                            }
+                            PagerIndicator(
+                                pagerState = pagerState,
+                                numOfPages = state.offers.size,
+                                circleSpacing = 4.dp,
+                                activeLineWidth = 16.dp,
+                                modifier = Modifier.padding(top = 16.dp)
+                            )
 
-            AnimatedVisibility(visible = state.offers.isNotEmpty()) {
-                ItemSection(
-                    title = Resources.strings.offers,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        val pagerState = rememberPagerState()
-                        HorizontalPager(
-                            pageCount = state.offers.size,
-                            state = pagerState,
-                            contentPadding = PaddingValues(horizontal = 16.dp),
-                            pageSpacing = 16.dp
-                        ) { page ->
-                            Image(
-                                painter = rememberAsyncImagePainter(model = state.offers[page]),
-                                contentDescription = "",
-                                modifier = Modifier
-                                    .height(150.dp)
-                                    .fillMaxWidth()
-                                    .clip(RoundedCornerShape(Theme.radius.medium)),
-                                contentScale = ContentScale.Crop
+                            CarouselAutoPlayHandler(
+                                pagerState = pagerState,
+                                carouselSize = state.offers.size
                             )
                         }
-                        PagerIndicator(
-                            pagerState = pagerState,
-                            numOfPages = state.offers.size,
-                            circleSpacing = 4.dp,
-                            activeLineWidth = 16.dp,
-                            modifier = Modifier.padding(top = 16.dp)
-                        )
 
-                        CarouselAutoPlayHandler(
-                            pagerState = pagerState,
-                            carouselSize = state.offers.size
-                        )
                     }
 
                 }
-
             }
 
-            ItemSection(
-                title = Resources.strings.services,
-                modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
-                hasShowMore = true,
-                onClickShowMore = { listener.onClickShowAllServices() }
-            ) {
-                LazyRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+            item {
+                ItemSection(
+                    title = Resources.strings.services,
+                    modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                    hasShowMore = true,
+                    onClickShowMore = { listener.onClickShowAllServices() }
                 ) {
-                    items(state.services) { service ->
-                        val painter = rememberAsyncImagePainter(
-                            model = ImageRequest.Builder(context = LocalContext.current)
-                                .data(service.imageUrl)
-                                .decoderFactory(SvgDecoder.Factory())
-                                .build()
-                        )
-                        ItemService(
-                            onClick = { },
-                            painter = painter,
-                            title = service.name
-                        )
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    ) {
+                        items(state.services) { service ->
+                            val painter = rememberAsyncImagePainter(
+                                model = ImageRequest.Builder(context = LocalContext.current)
+                                    .data(service.imageUrl)
+                                    .decoderFactory(SvgDecoder.Factory())
+                                    .build()
+                            )
+                            ItemService(
+                                onClick = { },
+                                painter = painter,
+                                title = service.name
+                            )
+                        }
                     }
                 }
             }
 
-            ItemSection(
-                title = Resources.strings.bestSpecialists,
-                modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
-                hasShowMore = true,
-                onClickShowMore = { listener.onClickShowAllSpecialists() }
-            ) {
-                LazyHorizontalGrid(
-                    rows = GridCells.Fixed(2),
-                    modifier = Modifier.fillMaxWidth(),
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+            item {
+                ItemSection(
+                    title = Resources.strings.bestSpecialists,
+                    modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                    hasShowMore = true,
+                    onClickShowMore = { listener.onClickShowAllSpecialists() }
                 ) {
-
+                    LazyHorizontalGrid(
+                        rows = GridCells.Fixed(2),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(700.dp), // itemHeight * rowCount + verticalSpacing * (rowCount - 1)
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                    ) {
+                        items(state.bestSpecialists) { specialist ->
+                            ItemSpecialist(
+                                onClickFav = {},
+                                onClickBookNow = { id -> listener.onClickBookNow(id) },
+                                onClickMessage = {},
+                                onClickCall = {},
+                                specialist = specialist
+                            )
+                        }
+                    }
                 }
             }
+
 
         }
-
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             AnimatedVisibility(visible = state.isLoading) {
                 ServifyLoading(isLoading = state.isLoading)

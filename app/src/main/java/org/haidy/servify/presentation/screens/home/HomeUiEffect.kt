@@ -9,4 +9,5 @@ sealed class HomeUiEffect {
     object NavigateToBestSpecialists : HomeUiEffect()
     object NavigateToAddService : HomeUiEffect()
     object NavigateToAddCard : HomeUiEffect()
+    data class NavigateToBookingAppointment(val specialistId: String): HomeUiEffect()
 }

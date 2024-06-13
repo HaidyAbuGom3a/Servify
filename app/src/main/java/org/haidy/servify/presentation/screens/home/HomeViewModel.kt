@@ -4,6 +4,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import org.haidy.servify.domain.usecase.AuthUseCase
 import org.haidy.servify.domain.usecase.ServicesUseCase
+import org.haidy.servify.domain.usecase.SpecialistsUseCase
 import org.haidy.servify.domain.usecase.UserUseCase
 import org.haidy.servify.presentation.base.BaseViewModel
 import javax.inject.Inject
@@ -12,15 +13,24 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val userUseCase: UserUseCase,
     private val authUseCase: AuthUseCase,
-    private val servicesUseCase: ServicesUseCase
+    private val servicesUseCase: ServicesUseCase,
+    private val specialistsUseCase: SpecialistsUseCase
 ) : BaseViewModel<HomeUiState, HomeUiEffect>(HomeUiState()), HomeInteractionListener {
 
     init {
         getUser()
         getServices()
         getOffers()
+        getBestSpecialists()
     }
 
+    private fun getBestSpecialists(){
+        tryToExecute(
+            { specialistsUseCase.getBestSpecialists() },
+            { specialists -> _state.update { it.copy(bestSpecialists = specialists) }},
+            {}
+        )
+    }
     private fun getServices() {
         tryToExecute(
             {
@@ -111,5 +121,9 @@ class HomeViewModel @Inject constructor(
 
     override fun onClickAddCard() {
         sendNewEffect(HomeUiEffect.NavigateToAddCard)
+    }
+
+    override fun onClickBookNow(specialistId: String) {
+        sendNewEffect(HomeUiEffect.NavigateToBookingAppointment(specialistId))
     }
 }

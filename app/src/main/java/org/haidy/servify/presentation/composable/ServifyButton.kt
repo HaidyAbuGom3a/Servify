@@ -43,12 +43,13 @@ fun ServifyButton(
     elevation: ButtonElevation = ButtonDefaults.buttonElevation(),
     fontWeight: FontWeight = FontWeight.Bold,
     fontSize: TextUnit = 16.sp,
+    buttonHeight: Dp = 48.dp,
     isLoading: Boolean = false,
     buttonRadius: Dp = Theme.radius.large
 ) {
     Button(
         { onClick() },
-        modifier = modifier.height(48.dp),
+        modifier = modifier.height(buttonHeight),
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = contentColor,

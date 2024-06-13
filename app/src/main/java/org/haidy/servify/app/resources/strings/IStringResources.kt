@@ -159,4 +159,5 @@ interface IStringResources {
     val expiryDate: String
     val securityCode: String
     val name: String
+    val discount: String
 }

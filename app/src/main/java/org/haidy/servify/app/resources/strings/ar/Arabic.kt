@@ -161,4 +161,5 @@ data class Arabic(
     override val expiryDate: String = "تاريخ الإنتهاء",
     override val securityCode: String = "الرقم السري",
     override val name: String = "الاسم",
+    override val discount: String = "خصم",
     ) : IStringResources

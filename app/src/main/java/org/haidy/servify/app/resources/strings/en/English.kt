@@ -161,4 +161,5 @@ data class English(
     override val expiryDate: String = "Expiry Date",
     override val securityCode: String = "Security Code",
     override val name: String = "Name",
+    override val discount: String = "Discount",
 ) : IStringResources

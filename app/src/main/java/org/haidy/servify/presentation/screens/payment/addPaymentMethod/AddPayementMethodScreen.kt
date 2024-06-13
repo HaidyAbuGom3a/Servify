@@ -58,7 +58,7 @@ fun AddPaymentMethodContent(
             ServifyAppBar(
                 onNavigateUp = { listener.onClickBackIcon() },
                 isBackIconVisible = true,
-                title = Resources.strings.bookAppointment
+                title = Resources.strings.addPaymentMethod
             )
         },
         bottomBar = {

@@ -52,7 +52,10 @@ data class DrawableResources(
     val meezaLogo: Int = R.drawable.meeza_logo,
     val masterCardLogo: Int = R.drawable.master_card_logo,
     val americanExpressLogo: Int = R.drawable.amex_logo,
-    val addCardIcon: Int = R.drawable.add_card_icon
+    val addCardIcon: Int = R.drawable.add_card_icon,
+    val specialistIcon: Int = R.drawable.specialist_icon,
+    val phoneIcon: Int = R.drawable.phone_icon,
+    val messageIcon: Int = R.drawable.message_icon
 )
 
 val DrawableDarkResources = DrawableResources(
