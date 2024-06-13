@@ -156,4 +156,7 @@ interface IStringResources {
     val viewBooking: String
     val price: String
     val bookNow: String
+    val expiryDate: String
+    val securityCode: String
+    val name: String
 }

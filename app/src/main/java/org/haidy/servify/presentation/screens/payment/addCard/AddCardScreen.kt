@@ -29,6 +29,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
+import org.haidy.servify.presentation.modifier.noRippleEffect
+import org.haidy.servify.presentation.screens.payment.addPaymentMethod.navigateToAddPaymentMethod
 import org.haidy.servify.presentation.screens.payment.composable.CardItem
 import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.sum
@@ -38,7 +40,7 @@ fun AddCardScreen(viewModel: AddCardViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     EffectHandler(effects = viewModel.effect) { effect, navController ->
         when (effect) {
-            AddCardUiEffect.NavigateToAddPaymentMethod -> TODO()
+            AddCardUiEffect.NavigateToAddPaymentMethod -> navController.navigateToAddPaymentMethod()
             AddCardUiEffect.NavigateUp -> navController.navigateUp()
         }
 
@@ -75,6 +77,7 @@ fun AddCardContent(state: AddCardUiState, listener: AddCardInteractionListener) 
                         .fillMaxWidth()
                         .height(200.dp)
                         .clip(RoundedCornerShape(Theme.radius.large))
+                        .noRippleEffect { listener.onClickAddCard() }
                         .background(Theme.colors.cardGrey)
                         .padding(horizontal = 16.dp, vertical = 24.dp), contentAlignment = Alignment.Center
                 ) {

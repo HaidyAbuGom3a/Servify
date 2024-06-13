@@ -158,4 +158,7 @@ data class Arabic(
     override val writeHere: String = "اكتب هنا",
     override val price: String = "السعر",
     override val bookNow: String = "احجز الآن",
+    override val expiryDate: String = "تاريخ الإنتهاء",
+    override val securityCode: String = "الرقم السري",
+    override val name: String = "الاسم",
     ) : IStringResources

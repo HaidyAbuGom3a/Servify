@@ -158,4 +158,7 @@ data class English(
     override val writeHere: String = "Write here",
     override val price: String = "Price",
     override val bookNow: String = "Book now",
+    override val expiryDate: String = "Expiry Date",
+    override val securityCode: String = "Security Code",
+    override val name: String = "Name",
 ) : IStringResources

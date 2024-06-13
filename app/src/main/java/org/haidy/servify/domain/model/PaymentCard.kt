@@ -27,7 +27,7 @@ data class Date(
 )
 
 private val res = DrawableResources()
-private fun getLogo(cardType: PaymentCardType): Int {
+fun getLogo(cardType: PaymentCardType): Int {
     return when (cardType) {
         PaymentCardType.VISA -> res.visaLogo
         PaymentCardType.MASTER_CARD -> res.masterCardLogo
