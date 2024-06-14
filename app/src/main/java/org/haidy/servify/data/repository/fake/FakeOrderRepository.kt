@@ -100,7 +100,7 @@ private val orders = listOf(
             1 - fix the window
             2 - fix the door 
         """.trimIndent(),
-        totalPrice = "300EGP"
+        totalPrice = "300"
     ),
     ServiceOrder(
         "2",
@@ -128,7 +128,7 @@ private val orders = listOf(
         serviceName = "Air Conditioning",
         timeStamp = 1715517330,
         requiredTasks = "Fix air conditioner ",
-        totalPrice = "500EGP"
+        totalPrice = "500"
     ),
     ServiceOrder(
         "4",
@@ -156,7 +156,7 @@ private val orders = listOf(
         serviceName = "Carpentry",
         timeStamp = 1716467730,
         requiredTasks = "Fix air conditioner ",
-        totalPrice = "500EGP"
+        totalPrice = "500"
     ),
     ServiceOrder(
         "1",
@@ -187,7 +187,7 @@ private val orders = listOf(
             1 - fix the window
             2 - fix the door 
         """.trimIndent(),
-        totalPrice = "300EGP"
+        totalPrice = "300"
     ),
 
     )

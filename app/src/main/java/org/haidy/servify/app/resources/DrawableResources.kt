@@ -55,7 +55,9 @@ data class DrawableResources(
     val addCardIcon: Int = R.drawable.add_card_icon,
     val specialistIcon: Int = R.drawable.specialist_icon,
     val phoneIcon: Int = R.drawable.phone_icon,
-    val messageIcon: Int = R.drawable.message_icon
+    val messageIcon: Int = R.drawable.message_icon,
+    val cardIcon: Int = R.drawable.card_icon,
+    val cashIcon: Int = R.drawable.cash_icon,
 )
 
 val DrawableDarkResources = DrawableResources(

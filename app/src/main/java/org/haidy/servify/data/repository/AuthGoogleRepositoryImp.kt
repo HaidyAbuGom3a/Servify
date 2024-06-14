@@ -75,7 +75,6 @@ class AuthGoogleRepositoryImp @Inject constructor(
 
     override suspend fun loginWithId(id: String): UserAuth {
         val response = wrapResponse { apiService.loginWithGoogle(id) }?.data?.userAuth?.toUserAuth()
-        println("token ${response?.token}")
         return response ?: UserAuth("", false, AuthServiceProvider.GOOGLE)
     }
 

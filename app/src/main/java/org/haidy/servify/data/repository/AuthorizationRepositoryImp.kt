@@ -1,7 +1,6 @@
 package org.haidy.servify.data.repository
 
 import android.content.Context
-import android.graphics.Bitmap
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -12,7 +11,6 @@ import org.haidy.servify.data.util.convertToFile
 import org.haidy.servify.data.util.toStringOrEmpty
 import org.haidy.servify.domain.model.AuthServiceProvider
 import org.haidy.servify.domain.model.FormSignUp
-import org.haidy.servify.domain.model.Gender
 import org.haidy.servify.domain.model.UserAuth
 import org.haidy.servify.domain.repository.IAuthorizationRepository
 import javax.inject.Inject
@@ -32,11 +30,6 @@ class AuthorizationRepositoryImp @Inject constructor(
                 file.asRequestBody("image/*".toMediaTypeOrNull())
             )
         }
-//        val multipartImage = if(image != null){
-//            MultipartBody.Part.createFormData("image",image.name,image.asRequestBody())
-//        }else{
-//            null
-//        }
 
         return wrapResponse {
             apiService.signupUser(

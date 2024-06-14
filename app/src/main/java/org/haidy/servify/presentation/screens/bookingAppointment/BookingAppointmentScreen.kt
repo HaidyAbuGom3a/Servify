@@ -28,6 +28,7 @@ import org.haidy.servify.presentation.screens.bookingAppointment.composable.Item
 import org.haidy.servify.presentation.screens.bookingAppointment.composable.ItemRequiredTasks
 import org.haidy.servify.presentation.screens.bookingAppointment.composable.ItemTime
 import org.haidy.servify.presentation.screens.bookingAppointment.composable.SpecialistTobRow
+import org.haidy.servify.presentation.screens.payment.paymentOption.navigateToPaymentOption
 import org.haidy.servify.presentation.util.EffectHandler
 
 
@@ -37,6 +38,7 @@ fun BookingAppointmentScreen(viewModel: BookingAppointmentViewModel = hiltViewMo
     EffectHandler(effects = viewModel.effect) {  effect, navController ->
         when(effect){
             BookingAppointmentUiEffect.NavigateUp -> navController.popBackStack()
+            BookingAppointmentUiEffect.NavigateToPaymentOption -> navController.navigateToPaymentOption()
         }
     }
     BookingAppointmentContent(state = state, listener = viewModel)

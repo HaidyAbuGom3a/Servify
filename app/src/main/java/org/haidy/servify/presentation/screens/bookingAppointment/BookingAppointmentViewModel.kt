@@ -91,7 +91,7 @@ class BookingAppointmentViewModel @Inject constructor(
             } else {
                 tryToExecute(
                     { ordersUseCase.addOrder(order) },
-                    { sendNewEffect(BookingAppointmentUiEffect.NavigateUp) },
+                    { sendNewEffect(BookingAppointmentUiEffect.NavigateToPaymentOption) },
                     {}
                 )
             }
