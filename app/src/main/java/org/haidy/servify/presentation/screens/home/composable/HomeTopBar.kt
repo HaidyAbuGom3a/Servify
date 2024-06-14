@@ -35,7 +35,10 @@ fun HomeTopBar(
     ServifyAppBar(
         isBackIconVisible = false,
         leading = {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(start = 16.dp)
+            ) {
                 val image = imageUrl.ifEmpty { Resources.images.userImage }
                 Image(
                     painter = rememberAsyncImagePainter(model = image),
@@ -81,7 +84,7 @@ fun HomeTopBar(
             }
         },
         actions = {
-            Row {
+            Row( modifier = Modifier.padding(end = 16.dp)){
                 Icon(
                     painter = painterResource(id = Resources.images.homeNotificationIcon),
                     contentDescription = "",
@@ -98,6 +101,5 @@ fun HomeTopBar(
                 )
             }
         },
-        modifier = Modifier.padding(horizontal = 16.dp)
     )
 }

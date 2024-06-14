@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
@@ -45,7 +44,7 @@ fun FeedbackScreen(viewModel: FeedbackViewModel = hiltViewModel()) {
             }
         }
     }
-    FeedbackContent(state = state, listener =viewModel )
+    FeedbackContent(state = state, listener = viewModel)
 }
 
 @Composable
@@ -62,12 +61,17 @@ fun FeedbackContent(state: FeedbackUiState, listener: FeedbackInteractionListene
             ServifyButton(
                 onClick = { listener.onClickSubmitFeedback() },
                 text = Resources.strings.submitFeedback,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 32.dp)
+                modifier = Modifier
+                    .background(Theme.colors.background)
+                    .padding(start = 16.dp, end = 16.dp, bottom = 32.dp)
             )
         }
     ) { paddingValues ->
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(paddingValues).background(Theme.colors.background),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .background(Theme.colors.background),
             contentPadding = PaddingValues(vertical = 32.dp, horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -92,7 +96,9 @@ fun FeedbackContent(state: FeedbackUiState, listener: FeedbackInteractionListene
                 ItemRating(
                     showTextRating = false,
                     rating = state.rating,
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 16.dp),
                     onClick = { index ->
                         listener.onClickStar(index.toInt())
                     },

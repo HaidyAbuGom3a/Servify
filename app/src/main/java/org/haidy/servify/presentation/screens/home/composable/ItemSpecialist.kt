@@ -95,21 +95,25 @@ fun ItemSpecialist(
                 Spacer(modifier = Modifier.weight(1f))
                 val discount = specialist.service.discount * 100
                 if (discount > 0) {
-                    Text(
-                        text = "${Resources.strings.discount} $discount%",
-                        style = Theme.typography.caption.copy(color = Theme.colors.contrast),
+                    Box(
                         modifier = Modifier
-                            .padding(8.dp)
-                            .background(Theme.colors.accent300)
                             .clip(RoundedCornerShape(4.dp))
-                    )
+                            .background(Theme.colors.accent300)
+                            .padding(4.dp)
+
+                    ) {
+                        Text(
+                            text = "${Resources.strings.discount} $discount%",
+                            style = Theme.typography.caption.copy(color = Color.Black),
+                        )
+                    }
                 }
             }
 
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 4.dp, vertical = 6.dp),
+                    .padding(horizontal = 4.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
@@ -132,15 +136,15 @@ fun ItemSpecialist(
                     color = Theme.colors.contrast,
                     fontWeight = FontWeight.Bold
                 ),
-                modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp)
+                modifier = Modifier.padding(horizontal = 4.dp)
             )
             ItemLocation(
                 governorate = specialist.location.governorate,
                 country = specialist.location.country,
-                modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp)
+                modifier = Modifier.padding(start = 4.dp, end = 4.dp, bottom = 12.dp, top = 8.dp)
             )
             Row(
-                modifier = Modifier.padding(horizontal = 4.dp, vertical = 16.dp),
+                modifier = Modifier.padding(start = 4.dp, end = 4.dp, bottom = 24.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 ServifyButton(
@@ -173,9 +177,9 @@ fun ItemSpecialist(
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
+                        .padding(start = 8.dp)
                         .clip(CircleShape)
                         .background(Theme.colors.accent300)
-                        .padding(start = 8.dp)
                 ) {
                     Icon(
                         painter = painterResource(id = Resources.images.messageIcon),

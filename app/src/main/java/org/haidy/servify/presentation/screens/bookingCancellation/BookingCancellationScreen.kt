@@ -74,7 +74,7 @@ fun BookingCancellationContent(
                 Text(
                     text = Resources.strings.whyDoYouWantToCancel,
                     style = Theme.typography.titleLarge.copy(
-                        color = Theme.colors.grey300,
+                        color = Theme.colors.contrast,
                         fontWeight = FontWeight.Bold
                     ),
                     modifier = Modifier

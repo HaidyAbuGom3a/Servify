@@ -237,7 +237,7 @@ fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
                         rows = GridCells.Fixed(2),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(700.dp), // itemHeight * rowCount + verticalSpacing * (rowCount - 1)
+                            .height(580.dp), // itemHeight * rowCount + verticalSpacing * (rowCount - 1)
                         contentPadding = PaddingValues(horizontal = 16.dp),
                         horizontalArrangement = Arrangement.spacedBy(16.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp),
