@@ -35,8 +35,8 @@ import org.haidy.servify.presentation.util.EffectHandler
 @Composable
 fun BookingAppointmentScreen(viewModel: BookingAppointmentViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
-    EffectHandler(effects = viewModel.effect) {  effect, navController ->
-        when(effect){
+    EffectHandler(effects = viewModel.effect) { effect, navController ->
+        when (effect) {
             BookingAppointmentUiEffect.NavigateUp -> navController.popBackStack()
             BookingAppointmentUiEffect.NavigateToPaymentOption -> navController.navigateToPaymentOption()
         }
@@ -58,7 +58,10 @@ fun BookingAppointmentContent(
             )
         },
         bottomBar = {
-            Surface(shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)) {
+            Surface(
+                shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+                shadowElevation = 4.dp
+            ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -115,12 +118,14 @@ fun BookingAppointmentContent(
                 ItemRequiredTasks(
                     onValueChange = { text -> listener.onRequiredTasksChanged(text) },
                     text = state.requiredTasks,
-                    modifier = Modifier.fillMaxWidth().padding(
-                        top = 24.dp,
-                        start = 16.dp,
-                        end = 16.dp,
-                        bottom = 32.dp
-                    )
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            top = 24.dp,
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = 32.dp
+                        )
                 )
             }
 

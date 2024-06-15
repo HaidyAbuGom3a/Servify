@@ -58,6 +58,9 @@ data class DrawableResources(
     val messageIcon: Int = R.drawable.message_icon,
     val cardIcon: Int = R.drawable.card_icon,
     val cashIcon: Int = R.drawable.cash_icon,
+    val paymentReceiptCard: Int = R.drawable.payment_receipt_card,
+    val successOrangeShape: Int = R.drawable.success_orange,
+    val successGreenShape: Int = R.drawable.success_green
 )
 
 val DrawableDarkResources = DrawableResources(

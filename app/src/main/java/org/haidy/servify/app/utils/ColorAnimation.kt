@@ -37,6 +37,7 @@ fun getAnimatedColorScheme(newColorScheme: Colors): Colors {
         grey200 = animateColor(targetValue = newColorScheme.grey200),
         grey300 = animateColor(targetValue = newColorScheme.grey300),
         background = animateColor(targetValue = newColorScheme.background),
+        backgroundGrey = animateColor(targetValue = newColorScheme.backgroundGrey),
         blue = animateColor(targetValue = newColorScheme.blue),
         card = animateColor(targetValue = newColorScheme.card),
         contrast = animateColor(targetValue = newColorScheme.contrast),

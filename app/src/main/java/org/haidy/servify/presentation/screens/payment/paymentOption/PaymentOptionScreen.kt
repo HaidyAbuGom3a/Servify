@@ -39,6 +39,7 @@ import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
 import org.haidy.servify.presentation.composable.ServifyButton
 import org.haidy.servify.presentation.modifier.noRippleEffect
+import org.haidy.servify.presentation.screens.payment.paymentSuccess.navigateToPaymentSuccess
 import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.sum
 
@@ -46,8 +47,8 @@ import org.haidy.servify.presentation.util.sum
 fun PaymentOptionScreen(viewModel: PaymentOptionViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     EffectHandler(effects = viewModel.effect) { effect, navController ->
-        when(effect){
-            PaymentOptionUiEffect.NavigateToPaymentSuccess -> {}
+        when (effect) {
+            PaymentOptionUiEffect.NavigateToPaymentSuccess -> navController.navigateToPaymentSuccess()
             PaymentOptionUiEffect.NavigateUp -> navController.popBackStack()
         }
     }
@@ -65,7 +66,10 @@ fun PaymentOptionContent(state: PaymentOptionUiState, listener: PaymentOptionInt
             )
         },
         bottomBar = {
-            Surface(shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)) {
+            Surface(
+                shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+                shadowElevation = 4.dp
+            ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()

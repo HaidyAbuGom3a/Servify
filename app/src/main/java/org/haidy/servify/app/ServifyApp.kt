@@ -2,6 +2,8 @@ package org.haidy.servify.app
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -47,6 +49,7 @@ val LocalDrawerState = compositionLocalOf<DrawerState> {
     error("No drawer state found!")
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ServifyApp(state: MainUiState) {
@@ -104,6 +107,7 @@ fun ServifyApp(state: MainUiState) {
                     if (state.isFirstTimeUseApp) ServifyDestination.ON_BOARDING
                     else if (state.isLoggedIn) ServifyDestination.HOME else ServifyDestination.LOGIN
                 ServifyNavGraph(startDestination = startDestination)
+                //PaymentSuccessScreen()
             }
 
         }
@@ -135,6 +139,8 @@ fun getStatusBarColor(): Color {
         Theme.colors.drawer
     } else if (currentDestination == ServifyDestination.PROFILE) {
         Theme.colors.primary300
+    } else if (currentDestination == ServifyDestination.PAYMENT_SUCCESS) {
+        Theme.colors.backgroundGrey
     } else {
         Theme.colors.background
     }

@@ -160,4 +160,11 @@ interface IStringResources {
     val securityCode: String
     val name: String
     val discount: String
+    val egp: String
+    val great: String
+    val payDate: String
+    val payTime: String
+    val totalAmount: String
+    val paymentMode: String
+
 }

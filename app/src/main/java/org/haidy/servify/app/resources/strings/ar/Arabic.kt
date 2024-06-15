@@ -162,4 +162,10 @@ data class Arabic(
     override val securityCode: String = "الرقم السري",
     override val name: String = "الاسم",
     override val discount: String = "خصم",
+    override val egp: String = "جنيهاً مصرياٌ",
+    override val great: String = "عظيم",
+    override val payDate: String = "تاريخ الدفع",
+    override val payTime: String = "موعد الدفع",
+    override val totalAmount: String = "إجمالي الدفع",
+    override val paymentMode: String = "وسيلة الدفع",
     ) : IStringResources

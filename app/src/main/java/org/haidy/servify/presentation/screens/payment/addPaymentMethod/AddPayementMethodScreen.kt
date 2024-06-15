@@ -44,7 +44,7 @@ fun AddPaymentMethodScreen(viewModel: AddPaymentMethodViewModel = hiltViewModel(
             AddPaymentMethodUiEffect.NavigateUp -> navController.popBackStack()
         }
     }
-    AddPaymentMethodContent(state = state, listener = viewModel )
+    AddPaymentMethodContent(state = state, listener = viewModel)
 }
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -62,7 +62,10 @@ fun AddPaymentMethodContent(
             )
         },
         bottomBar = {
-            Surface(shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)) {
+            Surface(
+                shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+                shadowElevation = 4.dp
+            ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()

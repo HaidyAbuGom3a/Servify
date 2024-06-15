@@ -162,4 +162,10 @@ data class English(
     override val securityCode: String = "Security Code",
     override val name: String = "Name",
     override val discount: String = "Discount",
+    override val egp: String = "EGP",
+    override val great: String = "Great",
+    override val payDate: String = "Pay Date",
+    override val payTime: String = "Pay Time",
+    override val totalAmount: String = "Total Amount",
+    override val paymentMode: String = "Payment Mode",
 ) : IStringResources

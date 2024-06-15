@@ -1,5 +1,7 @@
 package org.haidy.servify.app.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import org.haidy.servify.app.LocalNavController
@@ -19,6 +21,7 @@ import org.haidy.servify.presentation.screens.onBoarding.onBoardingRoute
 import org.haidy.servify.presentation.screens.payment.addCard.addCardRoute
 import org.haidy.servify.presentation.screens.payment.addPaymentMethod.addPaymentMethodRoute
 import org.haidy.servify.presentation.screens.payment.paymentOption.paymentOptionRoute
+import org.haidy.servify.presentation.screens.payment.paymentSuccess.paymentSuccessRoute
 import org.haidy.servify.presentation.screens.profile.profileRoute
 import org.haidy.servify.presentation.screens.services.servicesRoute
 import org.haidy.servify.presentation.screens.settings.settingsRoute
@@ -30,6 +33,7 @@ import org.haidy.servify.presentation.screens.verified.verifiedRoute
 import org.haidy.servify.presentation.screens.verifyEmail.verifyEmailRoute
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ServifyNavGraph(startDestination: String) {
     NavHost(
@@ -61,5 +65,6 @@ fun ServifyNavGraph(startDestination: String) {
         addPaymentMethodRoute()
         bestSpecialistsRoute()
         paymentOptionRoute()
+        paymentSuccessRoute()
     }
 }

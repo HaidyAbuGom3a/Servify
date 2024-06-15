@@ -1,6 +1,7 @@
 package org.haidy.servify.presentation.util
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Dp
+import androidx.navigation.NavController
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -95,4 +97,13 @@ fun Long.toDateString(): String {
     formatter.timeZone = java.util.TimeZone.getDefault()
     val date = Date(this * 1000)
     return formatter.format(date)
+}
+
+fun NavController.logBackStack(){
+    addOnDestinationChangedListener { controller, destination, arguments ->
+        Log.v("HAAIDY", "Current Back Stack:")
+        controller.backQueue.forEach { backStackEntry ->
+            Log.v("HAAIDY", "Route: ${backStackEntry.destination.route}")
+        }
+    }
 }
