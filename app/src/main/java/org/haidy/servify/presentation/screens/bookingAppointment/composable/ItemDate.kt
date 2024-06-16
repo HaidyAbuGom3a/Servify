@@ -62,7 +62,7 @@ private fun showDatePicker(onClickDate: (String) -> Unit, context: Context): Dat
     return DatePickerDialog(
         context,
         { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-            val updatedMonth = if (month < 10) "0$month" else month
+            val updatedMonth = if (month+1 < 10) "0${month+1}" else month+1
             val updatedDate = if (dayOfMonth < 10) "0$dayOfMonth" else dayOfMonth
             onClickDate("$updatedDate/$updatedMonth/$year")
         },

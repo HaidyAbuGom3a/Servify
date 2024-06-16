@@ -37,6 +37,7 @@ import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.domain.model.PaymentCard
 import org.haidy.servify.presentation.composable.ServifyButton
+import org.haidy.servify.presentation.screens.bokkingSuccess.navigateToBookingSuccess
 import org.haidy.servify.presentation.screens.bookingAppointment.BookingAppointmentArgs
 import org.haidy.servify.presentation.screens.bookingAppointment.BookingAppointmentViewModel
 import org.haidy.servify.presentation.screens.payment.paymentOption.PaymentMethod
@@ -65,7 +66,7 @@ fun PaymentSuccessScreen() {
         val paymentMode = getPaymentMode(it, paymentOptionState.selectedCard)
         PaymentSuccessContent(
             onClickDone = {
-                //navController.navigateToBookingSuccess()
+                navHostController.navigateToBookingSuccess()
             },
             paymentMode = paymentMode,
             totalPay = bookingAppointmentState.price
@@ -90,7 +91,7 @@ fun PaymentSuccessContent(
                     .fillMaxWidth()
                     .height(94.dp)
                     .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                    .background(Theme.colors.background), contentAlignment = Alignment.Center
+                    .background(Theme.colors.card), contentAlignment = Alignment.Center
             ) {
                 ServifyButton(
                     onClick = { onClickDone() },

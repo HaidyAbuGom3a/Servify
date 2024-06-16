@@ -104,7 +104,7 @@ fun ItemSpecialist(
                     ) {
                         Text(
                             text = "${Resources.strings.discount} $discount%",
-                            style = Theme.typography.caption.copy(color = Color.Black),
+                            style = Theme.typography.caption.copy(color = Theme.colors.black),
                         )
                     }
                 }

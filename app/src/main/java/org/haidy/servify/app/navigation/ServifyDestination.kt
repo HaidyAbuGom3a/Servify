@@ -27,4 +27,5 @@ object ServifyDestination {
     const val ADD_PAYMENT_METHOD: String = "AddPaymentMethod"
     const val PAYMENT_OPTION: String = "PaymentOption"
     const val PAYMENT_SUCCESS: String = "PaymentSuccess"
+    const val BOOKING_SUCCESS: String = "BookingSuccess"
 }

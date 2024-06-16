@@ -1,5 +1,7 @@
 package org.haidy.servify.app.resources.strings
 
+import androidx.compose.ui.text.AnnotatedString
+
 interface IStringResources {
     val emailOrUsername: String
     val email: String
@@ -166,5 +168,6 @@ interface IStringResources {
     val payTime: String
     val totalAmount: String
     val paymentMode: String
+    fun bookingSuccessMessage(name: String, serviceName: String, serviceDate: String): AnnotatedString
 
 }

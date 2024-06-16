@@ -1,5 +1,14 @@
 package org.haidy.servify.app.resources.strings.en
 
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.sp
+import org.haidy.servify.R
 import org.haidy.servify.app.resources.strings.IStringResources
 
 data class English(
@@ -168,4 +177,50 @@ data class English(
     override val payTime: String = "Pay Time",
     override val totalAmount: String = "Total Amount",
     override val paymentMode: String = "Payment Mode",
-) : IStringResources
+
+) : IStringResources {
+    override fun bookingSuccessMessage(
+        name: String,
+        serviceName: String,
+        serviceDate: String
+    ): AnnotatedString {
+        return buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(
+                    fontFamily = FontFamily(Font(R.font.sf_pro_display_regular)),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal,
+                )
+            ) {
+                append("Dear $name you have successfully scheduled booking of ")
+            }
+            withStyle(
+                style = SpanStyle(
+                    fontFamily = FontFamily(Font(R.font.sf_pro_display_regular)),
+                    fontWeight = FontWeight.Bold,
+                    fontSize =  16.sp,
+                )
+            ) {
+                append(serviceName)
+            }
+            withStyle(
+                style = SpanStyle(
+                    fontFamily = FontFamily(Font(R.font.sf_pro_display_regular)),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal,
+                )
+            ) {
+                append(" for the upcoming ")
+            }
+            withStyle(
+                style = SpanStyle(
+                    fontFamily = FontFamily(Font(R.font.sf_pro_display_regular)),
+                    fontWeight = FontWeight.Bold,
+                    fontSize =  16.sp,
+                )
+            ) {
+                append("$serviceDate.")
+            }
+        }
+    }
+}

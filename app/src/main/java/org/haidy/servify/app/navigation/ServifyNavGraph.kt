@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import org.haidy.servify.app.LocalNavController
 import org.haidy.servify.presentation.screens.addPhoto.addPhotoRoute
+import org.haidy.servify.presentation.screens.bokkingSuccess.bookingSuccessRoute
 import org.haidy.servify.presentation.screens.bookingAppointment.bookingAppointmentRoute
 import org.haidy.servify.presentation.screens.bookingCancellation.bookingCancellationRoute
 import org.haidy.servify.presentation.screens.bookingTrack.bookingTrackRoute
@@ -66,5 +67,6 @@ fun ServifyNavGraph(startDestination: String) {
         bestSpecialistsRoute()
         paymentOptionRoute()
         paymentSuccessRoute()
+        bookingSuccessRoute()
     }
 }

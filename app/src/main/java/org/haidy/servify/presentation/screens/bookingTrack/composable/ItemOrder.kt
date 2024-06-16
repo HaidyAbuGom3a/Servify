@@ -34,9 +34,10 @@ import org.haidy.servify.presentation.util.bottomBorder
 @Composable
 fun ItemOrder(
     order: ServiceOrder,
-    listener: BookingTrackInteractionListener
+    listener: BookingTrackInteractionListener?= null,
+    modifier: Modifier = Modifier
 ) {
-    Surface(shadowElevation = 2.dp, shape = RoundedCornerShape(16.dp)) {
+    Surface(shadowElevation = 2.dp, shape = RoundedCornerShape(16.dp), modifier = modifier) {
         Column(
             modifier = Modifier
                 .clip(RoundedCornerShape(16.dp))
@@ -57,12 +58,13 @@ fun ItemOrder(
                     color = Theme.colors.contrast
                 )
             )
+            val bottomBorderStroke = if(listener != null) (1.5).dp else 0.dp
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 12.dp, end = 12.dp)
                     .bottomBorder(
-                        (1.5).dp,
+                        bottomBorderStroke,
                         Theme.colors.accent100
                     )
                     .padding(top = 12.dp, bottom = 16.dp),
@@ -92,54 +94,56 @@ fun ItemOrder(
                     )
                 }
             }
-            Row(
-                modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (order.status != OrderStatus.CANCELLED) {
-                    val firstButtonText = when (order.status) {
-                        OrderStatus.UPCOMING -> Resources.strings.reschedule
-                        OrderStatus.COMPLETED -> Resources.strings.addRating
-                        else -> ""
+            if(listener!= null){
+                Row(
+                    modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (order.status != OrderStatus.CANCELLED) {
+                        val firstButtonText = when (order.status) {
+                            OrderStatus.UPCOMING -> Resources.strings.reschedule
+                            OrderStatus.COMPLETED -> Resources.strings.addRating
+                            else -> ""
+                        }
+                        val secondButtonText = when (order.status) {
+                            OrderStatus.UPCOMING -> Resources.strings.cancel
+                            OrderStatus.COMPLETED -> Resources.strings.rebook
+                            else -> ""
+                        }
+                        ServifyButton(
+                            onClick = {
+                                when (order.status) {
+                                    OrderStatus.UPCOMING -> listener.onClickReschedule(order.specialist.id, order.id)
+                                    OrderStatus.COMPLETED -> listener.onClickAddRating(order.specialist.id)
+                                    else -> {}
+                                }
+                            },
+                            text = firstButtonText,
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(end = 8.dp),
+                            fontSize = 14.sp
+                        )
+                        ServifyOutlinedButton(
+                            onClick = {
+                                when (order.status) {
+                                    OrderStatus.UPCOMING -> listener.onClickCancel(order.id)
+                                    OrderStatus.COMPLETED -> listener.onClickReBook(order.specialist.id)
+                                    else -> {}
+                                }
+                            },
+                            text = secondButtonText,
+                            modifier = Modifier.weight(1f),
+                            fontSize = 14.sp
+                        )
+                    } else {
+                        ServifyButton(
+                            onClick = { listener.onClickAddRating(specialistId = order.specialist.id) },
+                            text = Resources.strings.addRating,
+                            modifier = Modifier.padding(end = 8.dp),
+                            fontSize = 14.sp
+                        )
                     }
-                    val secondButtonText = when (order.status) {
-                        OrderStatus.UPCOMING -> Resources.strings.cancel
-                        OrderStatus.COMPLETED -> Resources.strings.rebook
-                        else -> ""
-                    }
-                    ServifyButton(
-                        onClick = {
-                            when (order.status) {
-                                OrderStatus.UPCOMING -> listener.onClickReschedule(order.specialist.id, order.id)
-                                OrderStatus.COMPLETED -> listener.onClickAddRating(order.specialist.id)
-                                else -> {}
-                            }
-                        },
-                        text = firstButtonText,
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(end = 8.dp),
-                        fontSize = 14.sp
-                    )
-                    ServifyOutlinedButton(
-                        onClick = {
-                            when (order.status) {
-                                OrderStatus.UPCOMING -> listener.onClickCancel(order.id)
-                                OrderStatus.COMPLETED -> listener.onClickReBook(order.specialist.id)
-                                else -> {}
-                            }
-                        },
-                        text = secondButtonText,
-                        modifier = Modifier.weight(1f),
-                        fontSize = 14.sp
-                    )
-                } else {
-                    ServifyButton(
-                        onClick = { listener.onClickAddRating(specialistId = order.specialist.id) },
-                        text = Resources.strings.addRating,
-                        modifier = Modifier.padding(end = 8.dp),
-                        fontSize = 14.sp
-                    )
                 }
             }
         }

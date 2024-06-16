@@ -75,7 +75,7 @@ fun PaymentOptionContent(state: PaymentOptionUiState, listener: PaymentOptionInt
                         .fillMaxWidth()
                         .height(94.dp)
                         .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                        .background(Theme.colors.background), contentAlignment = Alignment.Center
+                        .background(Theme.colors.card), contentAlignment = Alignment.Center
                 ) {
                     ServifyButton(
                         onClick = { listener.onClickProceed() },
