@@ -198,7 +198,7 @@ data class Arabic(
                     fontWeight = FontWeight.Normal,
                 )
             ) {
-                append("عزيزنا " + name + "لقد تم بنجاح حجز موعد لخدمة ")
+                append("عزيزنا $name لقد تم بنجاح حجز موعد لخدمة ")
             }
             withStyle(
                 style = SpanStyle(

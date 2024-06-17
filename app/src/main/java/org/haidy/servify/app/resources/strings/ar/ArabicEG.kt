@@ -198,7 +198,7 @@ data class ArabicEG(
                     fontWeight = FontWeight.Normal,
                 )
             ) {
-                append(" عميلنا " + name + "حبينا نبلغك أن تم بنجاح حجز معاد لخدمة ")
+                append(" عميلنا $name حبينا نبلغك أن تم بنجاح حجز معاد لخدمة ")
             }
             withStyle(
                 style = SpanStyle(
