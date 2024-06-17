@@ -15,6 +15,7 @@ import org.haidy.servify.data.repository.AuthGoogleRepositoryImp
 import org.haidy.servify.data.repository.AuthorizationRepositoryImp
 import org.haidy.servify.data.repository.LocationRepositoryImp
 import org.haidy.servify.data.repository.ServiceRepositoryImp
+import org.haidy.servify.data.repository.SpecialistRepositoryImp
 import org.haidy.servify.data.repository.UserRepositoryImp
 import org.haidy.servify.data.repository.fake.FakeOrderRepository
 import org.haidy.servify.data.repository.fake.FakePaymentRepository
@@ -113,6 +114,15 @@ object RepositoryModule {
         return FakeServicesRepository()
     }
 
+
+    @Singleton
+    @Provides
+    @Named("specialists")
+    fun provideSpecialistRepository(
+        apiService: ServifyApiService
+    ): ISpecialistRepository{
+        return SpecialistRepositoryImp(apiService)
+    }
 
     @Singleton
     @Provides

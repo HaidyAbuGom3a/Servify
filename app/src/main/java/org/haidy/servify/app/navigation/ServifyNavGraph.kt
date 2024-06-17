@@ -24,6 +24,8 @@ import org.haidy.servify.presentation.screens.payment.addPaymentMethod.addPaymen
 import org.haidy.servify.presentation.screens.payment.paymentOption.paymentOptionRoute
 import org.haidy.servify.presentation.screens.payment.paymentSuccess.paymentSuccessRoute
 import org.haidy.servify.presentation.screens.profile.profileRoute
+import org.haidy.servify.presentation.screens.search.searchRoute
+import org.haidy.servify.presentation.screens.searchFilter.filterRoute
 import org.haidy.servify.presentation.screens.services.servicesRoute
 import org.haidy.servify.presentation.screens.settings.settingsRoute
 import org.haidy.servify.presentation.screens.signup.signupScreenRoute
@@ -68,5 +70,7 @@ fun ServifyNavGraph(startDestination: String) {
         paymentOptionRoute()
         paymentSuccessRoute()
         bookingSuccessRoute()
+        searchRoute()
+        filterRoute()
     }
 }

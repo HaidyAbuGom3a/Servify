@@ -10,6 +10,17 @@ class FakeSpecialistsRepository : ISpecialistRepository {
         return specialists
     }
 
+    override suspend fun getFilteredSpecialists(
+        serviceName: String?,
+        name: String?,
+        rating: String?
+    ): List<Specialist> {
+        return specialists.filter {
+            it.name.contains(name.toString()) || (it.rating <= (rating?.toDouble()
+                ?: 0.0)) || it.service.name.contains(serviceName.toString())
+        }
+    }
+
     override suspend fun getNearestSpecialists(): List<Specialist> {
         return specialists.filter { it.location.governorate == "New Damietta" }
     }

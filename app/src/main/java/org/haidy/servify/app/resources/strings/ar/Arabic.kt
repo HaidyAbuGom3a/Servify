@@ -162,7 +162,7 @@ data class Arabic(
     override val save: String = "حفظ",
     override val thePrice: String = "السعر",
     override val time: String = "الوقت",
-    override val totalPay: String = "إجمالي البلغ",
+    override val totalPay: String = "إجمالي المبلغ",
     override val viewBooking: String = "اعرض الحجز",
     override val writeHere: String = "اكتب هنا",
     override val price: String = "السعر",
@@ -171,12 +171,19 @@ data class Arabic(
     override val securityCode: String = "الرقم السري",
     override val name: String = "الاسم",
     override val discount: String = "خصم",
-    override val egp: String = "جنيهاً مصرياٌ",
+    override val egp: String = "جنيهاً مصرياً",
     override val great: String = "عظيم",
     override val payDate: String = "تاريخ الدفع",
     override val payTime: String = "موعد الدفع",
     override val totalAmount: String = "إجمالي الدفع",
     override val paymentMode: String = "وسيلة الدفع",
+    override val applyFilter: String = "تطبيق الفلترة",
+    override val filter: String = "الفلترة",
+    override val noResultPleaseTryAgain: String = "لا يوجد نتيجة، حاول مجدداً من فضلك",
+    override val resetFilter: String = "إعادة تعيين",
+    override val result: String = "النتائج",
+    override val titleSearch: String = "بحث",
+    override val rating: String = "التقييم",
     ) : IStringResources{
     override fun bookingSuccessMessage(
         name: String,
@@ -191,7 +198,7 @@ data class Arabic(
                     fontWeight = FontWeight.Normal,
                 )
             ) {
-                append( "لقد تم بنجاح حجز موعد لخدمة " + name + "عزيزنا")
+                append("عزيزنا " + name + "لقد تم بنجاح حجز موعد لخدمة ")
             }
             withStyle(
                 style = SpanStyle(

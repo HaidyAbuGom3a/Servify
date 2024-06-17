@@ -126,4 +126,8 @@ class HomeViewModel @Inject constructor(
     override fun onClickBookNow(specialistId: String) {
         sendNewEffect(HomeUiEffect.NavigateToBookingAppointment(specialistId))
     }
+
+    override fun onClickSearch() {
+        sendNewEffect(HomeUiEffect.NavigateToSearch)
+    }
 }

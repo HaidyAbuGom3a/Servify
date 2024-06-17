@@ -58,6 +58,7 @@ import org.haidy.servify.presentation.screens.login.navigateToLogin
 import org.haidy.servify.presentation.screens.onBoarding.composable.PagerIndicator
 import org.haidy.servify.presentation.screens.payment.addCard.navigateToAddCard
 import org.haidy.servify.presentation.screens.profile.navigateToProfile
+import org.haidy.servify.presentation.screens.search.navigateToSearch
 import org.haidy.servify.presentation.screens.services.navigateToServices
 import org.haidy.servify.presentation.screens.settings.navigateToSettings
 import org.haidy.servify.presentation.screens.specialists.navigateToBestSpecialists
@@ -88,6 +89,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                 effect.specialistId,
                 "_"
             )
+
+            HomeUiEffect.NavigateToSearch -> navController.navigateToSearch()
         }
 
     }
@@ -150,7 +153,8 @@ fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
                     iconTint = Theme.colors.dark300.copy(alpha = 0.7f),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp, horizontal = 16.dp)
+                        .padding(vertical = 16.dp, horizontal = 16.dp),
+                    onLeadingIconClick = { listener.onClickSearch() }
                 )
             }
 

@@ -168,6 +168,13 @@ interface IStringResources {
     val payTime: String
     val totalAmount: String
     val paymentMode: String
+    val result: String
+    val filter: String
+    val applyFilter: String
+    val resetFilter: String
+    val noResultPleaseTryAgain: String
+    val titleSearch: String
+    val rating: String
     fun bookingSuccessMessage(name: String, serviceName: String, serviceDate: String): AnnotatedString
 
 }

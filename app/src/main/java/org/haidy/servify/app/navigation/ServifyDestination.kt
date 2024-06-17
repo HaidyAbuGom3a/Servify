@@ -28,4 +28,6 @@ object ServifyDestination {
     const val PAYMENT_OPTION: String = "PaymentOption"
     const val PAYMENT_SUCCESS: String = "PaymentSuccess"
     const val BOOKING_SUCCESS: String = "BookingSuccess"
+    const val SEARCH: String = "Search"
+    const val FILTER: String = "Filter"
 }

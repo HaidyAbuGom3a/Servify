@@ -177,6 +177,13 @@ data class English(
     override val payTime: String = "Pay Time",
     override val totalAmount: String = "Total Amount",
     override val paymentMode: String = "Payment Mode",
+    override val applyFilter: String = "Apply filter",
+    override val filter: String = "Filter",
+    override val noResultPleaseTryAgain: String = "No result, please try again !",
+    override val resetFilter: String = "Reset filter",
+    override val result: String = "Result",
+    override val titleSearch: String = "Search",
+    override val rating: String = "Rating"
 
 ) : IStringResources {
     override fun bookingSuccessMessage(

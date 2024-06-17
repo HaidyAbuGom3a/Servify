@@ -30,6 +30,7 @@ data class Colors(
     val contrast: Color,
     val drawer: Color,
     val black:Color,
+    val white: Color
 )
 
 val LightColors = Colors(
@@ -60,6 +61,7 @@ val LightColors = Colors(
     contrast = Color(0xFF000000),
     black = Color(0xFF000000),
     drawer = Color(0xFF602BA3),
+    white = Color(0xFFFFFFFF),
 )
 
 val DarkColors = Colors(
@@ -90,4 +92,5 @@ val DarkColors = Colors(
     contrast = Color(0xFFFFFFFF),
     black = Color(0xFF000000),
     drawer = Color(0xFF602BA3),
+    white = Color(0xFFFFFFFF),
 )

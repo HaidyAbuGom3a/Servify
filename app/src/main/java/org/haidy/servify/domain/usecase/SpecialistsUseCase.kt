@@ -6,7 +6,8 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class SpecialistsUseCase @Inject constructor(
-    @Named("fakeSpecialists") private val fakeSpecialistsRepo: ISpecialistRepository
+    @Named("fakeSpecialists") private val fakeSpecialistsRepo: ISpecialistRepository,
+    @Named("specialists") private val specialistsRepo: ISpecialistRepository
 ) {
     suspend fun getBestSpecialists(): List<Specialist> {
         return fakeSpecialistsRepo.getBestSpecialists()
@@ -16,7 +17,13 @@ class SpecialistsUseCase @Inject constructor(
         return fakeSpecialistsRepo.getNearestSpecialists()
     }
 
-    suspend fun getSpecialist(id: String): Specialist{
+    suspend fun getSpecialist(id: String): Specialist {
         return fakeSpecialistsRepo.getSpecialist(id)
     }
+
+    suspend fun getFilteredSpecialists(
+        serviceName: String? = null,
+        name: String? = null,
+        rating: String? = null
+    ) = specialistsRepo.getFilteredSpecialists(serviceName, name, rating)
 }

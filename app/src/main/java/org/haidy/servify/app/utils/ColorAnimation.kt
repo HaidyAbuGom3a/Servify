@@ -44,5 +44,6 @@ fun getAnimatedColorScheme(newColorScheme: Colors): Colors {
         black = animateColor(targetValue = newColorScheme.black),
         drawer = animateColor(targetValue = newColorScheme.drawer),
         cardGrey = animateColor(targetValue = newColorScheme.cardGrey),
+        white = animateColor(targetValue = newColorScheme.white),
     )
 }
