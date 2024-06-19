@@ -183,7 +183,9 @@ data class English(
     override val resetFilter: String = "Reset filter",
     override val result: String = "Result",
     override val titleSearch: String = "Search",
-    override val rating: String = "Rating"
+    override val rating: String = "Rating",
+    override val chats: String = "Chats",
+    override val typeMessageHere: String = "Type message here...",
 
 ) : IStringResources {
     override fun bookingSuccessMessage(

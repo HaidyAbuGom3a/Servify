@@ -184,6 +184,8 @@ data class ArabicEG(
     override val result: String = "النتايج",
     override val titleSearch: String = "بحث",
     override val rating: String = "التقييم",
+    override val chats: String = "المحادثات",
+    override val typeMessageHere: String = "اكتب رسالتك هنا...",
 ) : IStringResources {
     override fun bookingSuccessMessage(
         name: String,

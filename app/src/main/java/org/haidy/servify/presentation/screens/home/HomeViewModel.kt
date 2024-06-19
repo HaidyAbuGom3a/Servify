@@ -24,13 +24,14 @@ class HomeViewModel @Inject constructor(
         getBestSpecialists()
     }
 
-    private fun getBestSpecialists(){
+    private fun getBestSpecialists() {
         tryToExecute(
             { specialistsUseCase.getBestSpecialists() },
-            { specialists -> _state.update { it.copy(bestSpecialists = specialists) }},
+            { specialists -> _state.update { it.copy(bestSpecialists = specialists) } },
             {}
         )
     }
+
     private fun getServices() {
         tryToExecute(
             {
@@ -103,7 +104,9 @@ class HomeViewModel @Inject constructor(
                 _state.update { it.copy(isLoading = false) }
                 sendNewEffect(HomeUiEffect.NavigateToLogin)
             },
-            { _state.update { it.copy(isLoading = false) } }
+            {
+                _state.update { it.copy(isLoading = false) }
+            }
         )
     }
 

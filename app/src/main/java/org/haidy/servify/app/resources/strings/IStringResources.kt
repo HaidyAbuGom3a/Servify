@@ -175,6 +175,8 @@ interface IStringResources {
     val noResultPleaseTryAgain: String
     val titleSearch: String
     val rating: String
+    val chats: String
+    val typeMessageHere: String
     fun bookingSuccessMessage(name: String, serviceName: String, serviceDate: String): AnnotatedString
 
 }

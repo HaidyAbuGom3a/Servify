@@ -23,7 +23,7 @@ sealed class Screen(
             resources.bookingIcon
         )
 
-    object Profile :
-        Screen(ServifyDestination.PROFILE, resources.profileIcon, resources.profileIcon)
+    object Chats :
+        Screen(ServifyDestination.CHATS, resources.chatIcon, resources.chatIcon)
 
 }

@@ -16,9 +16,9 @@ import org.haidy.servify.app.LocalNavController
 import org.haidy.servify.app.navigation.Screen
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.screens.bookingTrack.navigateToBookingTrack
+import org.haidy.servify.presentation.screens.chatHistory.navigateToChatHistory
 import org.haidy.servify.presentation.screens.home.navigateToHome
 import org.haidy.servify.presentation.screens.location.navigateToLocation
-import org.haidy.servify.presentation.screens.profile.navigateToProfile
 
 @Composable
 fun ServifyBottomNavigation() {
@@ -69,12 +69,12 @@ fun ServifyBottomNavigation() {
 
         Spacer(modifier = Modifier.weight(1f))
 
-        Screen.Profile.let { profile ->
+        Screen.Chats.let { chats ->
             ServifyNavItem(
-                item = profile,
-                isSelected = profile.route == currentDestination,
+                item = chats,
+                isSelected = chats.route == currentDestination,
                 onClick = {
-                    if (profile.route != currentDestination) navController.navigateToProfile()
+                    if (chats.route != currentDestination) navController.navigateToChatHistory()
                 }
             )
         }

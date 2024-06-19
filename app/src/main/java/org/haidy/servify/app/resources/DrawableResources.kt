@@ -62,7 +62,8 @@ data class DrawableResources(
     val successOrangeShape: Int = R.drawable.success_orange,
     val successGreenShape: Int = R.drawable.success_green,
     val filterIcon: Int = R.drawable.filter_icon,
-    val notFoundImage: Int = R.drawable.not_found_image
+    val notFoundImage: Int = R.drawable.not_found_image,
+    val chatIcon: Int = R.drawable.chat_icon,
 )
 
 val DrawableDarkResources = DrawableResources(

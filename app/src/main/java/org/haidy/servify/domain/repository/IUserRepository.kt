@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import org.haidy.servify.app.utils.LanguageCode
 import org.haidy.servify.app.utils.ThemeMode
 import org.haidy.servify.domain.model.User
+import org.haidy.servify.domain.model.UserData
 
 interface IUserRepository {
     suspend fun saveIfFirstTimeUseApp(value: Boolean)
@@ -26,4 +27,5 @@ interface IUserRepository {
     suspend fun getUserId(): String
     suspend fun updateImage(imageBitmap: Bitmap): Boolean
     suspend fun getUserProfile(): User
+    suspend fun getUserData(userId: String): UserData
 }

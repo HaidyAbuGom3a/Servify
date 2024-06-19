@@ -9,10 +9,12 @@ import org.haidy.servify.app.utils.LanguageCode
 import org.haidy.servify.app.utils.ThemeMode
 import org.haidy.servify.data.local.IDataStore
 import org.haidy.servify.data.mapper.toUser
+import org.haidy.servify.data.mapper.toUserData
 import org.haidy.servify.data.remote.network.ServifyApiService
 import org.haidy.servify.data.util.convertToFile
 import org.haidy.servify.domain.model.Location
 import org.haidy.servify.domain.model.User
+import org.haidy.servify.domain.model.UserData
 import org.haidy.servify.domain.repository.IUserRepository
 import javax.inject.Inject
 
@@ -112,5 +114,9 @@ class UserRepositoryImp @Inject constructor(
         return wrapResponse { apiService.getUserProfile() }?.data?.toUser() ?: User(
             "", "", "", "", null, null, null, Location("", "", 0.0, 0.0)
         )
+    }
+
+    override suspend fun getUserData(userId: String): UserData {
+        return wrapResponse { apiService.getUerData(userId) }?.data.toUserData()
     }
 }

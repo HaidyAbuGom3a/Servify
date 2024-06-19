@@ -30,4 +30,5 @@ object ServifyDestination {
     const val BOOKING_SUCCESS: String = "BookingSuccess"
     const val SEARCH: String = "Search"
     const val FILTER: String = "Filter"
+    const val CHATS: String = "Chats"
 }

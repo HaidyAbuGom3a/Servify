@@ -60,8 +60,6 @@ class AuthUseCase @Inject constructor(
     }
 
     suspend fun logout() {
-        googleAuthRepo.signOut()
-        facebookRepository.signOut()
         userUseCase.saveToken("")
         userUseCase.saveIfEmailIsActive(false)
         userUseCase.saveEmail("")

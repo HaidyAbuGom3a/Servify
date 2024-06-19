@@ -8,6 +8,8 @@ import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.utils.LanguageCode
 import java.io.File
 import java.text.SimpleDateFormat
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
@@ -34,4 +36,10 @@ fun Long.toDateString(): String {
     val formatter = SimpleDateFormat("h aa - MMM dd, yyyy", locale)
     val date = Date(this * 1000)
     return formatter.format(date)
+}
+
+fun String.toTimeStamp(): Long{
+    val formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy 'at' h:mm:ss a 'UTC'XXX", Locale.ENGLISH)
+    val zonedDateTime = ZonedDateTime.parse(this, formatter)
+    return zonedDateTime.toInstant().toEpochMilli()
 }

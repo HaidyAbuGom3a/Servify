@@ -126,7 +126,7 @@ private fun getIsNavigationBarVisible(navController: NavController): Boolean {
         ServifyDestination.HOME,
         ServifyDestination.LOCATION,
         ServifyDestination.BOOKING_TRACK,
-        ServifyDestination.PROFILE
+        ServifyDestination.CHATS
     )
 }
 

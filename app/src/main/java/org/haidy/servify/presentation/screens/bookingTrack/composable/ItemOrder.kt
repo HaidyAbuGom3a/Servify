@@ -52,7 +52,7 @@ fun ItemOrder(
                         (1.5).dp,
                         Theme.colors.accent100
                     )
-                    .padding(top = 12.dp, bottom = 8.dp),
+                    .padding(top = 8.dp, bottom = 12.dp),
                 style = Theme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
                     color = Theme.colors.contrast

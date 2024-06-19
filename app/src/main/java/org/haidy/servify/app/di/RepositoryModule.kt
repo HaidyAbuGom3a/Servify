@@ -3,6 +3,7 @@ package org.haidy.servify.app.di
 import android.content.Context
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,6 +14,7 @@ import org.haidy.servify.data.remote.network.ServifyApiService
 import org.haidy.servify.data.repository.AuthFacebookRepositoryImp
 import org.haidy.servify.data.repository.AuthGoogleRepositoryImp
 import org.haidy.servify.data.repository.AuthorizationRepositoryImp
+import org.haidy.servify.data.repository.ChatRepositoryImp
 import org.haidy.servify.data.repository.LocationRepositoryImp
 import org.haidy.servify.data.repository.ServiceRepositoryImp
 import org.haidy.servify.data.repository.SpecialistRepositoryImp
@@ -24,6 +26,7 @@ import org.haidy.servify.data.repository.fake.FakeSpecialistsRepository
 import org.haidy.servify.domain.repository.IAuthFacebookRepository
 import org.haidy.servify.domain.repository.IAuthGoogleRepository
 import org.haidy.servify.domain.repository.IAuthorizationRepository
+import org.haidy.servify.domain.repository.IChatRepository
 import org.haidy.servify.domain.repository.ILocationRepository
 import org.haidy.servify.domain.repository.IOrderRepository
 import org.haidy.servify.domain.repository.IPaymentRepository
@@ -120,7 +123,7 @@ object RepositoryModule {
     @Named("specialists")
     fun provideSpecialistRepository(
         apiService: ServifyApiService
-    ): ISpecialistRepository{
+    ): ISpecialistRepository {
         return SpecialistRepositoryImp(apiService)
     }
 
@@ -131,6 +134,14 @@ object RepositoryModule {
         return FakeSpecialistsRepository()
     }
 
+    @Singleton
+    @Provides
+    fun provideChatRepository(
+        firestore: FirebaseFirestore,
+        userRepo: IUserRepository
+    ): IChatRepository {
+        return ChatRepositoryImp(firestore, userRepo)
+    }
 
     @Singleton
     @Provides

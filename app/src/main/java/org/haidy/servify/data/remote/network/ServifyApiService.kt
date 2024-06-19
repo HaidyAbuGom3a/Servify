@@ -8,6 +8,7 @@ import org.haidy.servify.data.dto.GovernoratesDto
 import org.haidy.servify.data.dto.MessageResponse
 import org.haidy.servify.data.dto.ServiceDto
 import org.haidy.servify.data.dto.SpecialistResponse
+import org.haidy.servify.data.dto.UserDataDto
 import org.haidy.servify.data.dto.UserDto
 import org.haidy.servify.data.dto.UserProfileDto
 import retrofit2.Response
@@ -116,5 +117,10 @@ interface ServifyApiService {
 
     @GET("api/services/best-specialists")
     suspend fun getBestSpecialists(): Response<BaseResponse<List<SpecialistResponse>>>
+
+    @GET("api/user/{id}")
+    suspend fun getUerData(
+        @Path("id") userId: String
+    ): Response<BaseResponse<UserDataDto>>
 
 }
