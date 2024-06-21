@@ -27,7 +27,7 @@ import com.google.firebase.ktx.Firebase
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "http://54.225.3.62/"
+    private const val BASE_URL = "http://54.164.42.164/"
 
     @Singleton
     @Provides

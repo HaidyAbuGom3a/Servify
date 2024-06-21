@@ -13,10 +13,12 @@ import org.haidy.servify.domain.model.AuthServiceProvider
 import org.haidy.servify.domain.model.FormSignUp
 import org.haidy.servify.domain.model.UserAuth
 import org.haidy.servify.domain.repository.IAuthorizationRepository
+import org.haidy.servify.domain.repository.IUserRepository
 import javax.inject.Inject
 
 class AuthorizationRepositoryImp @Inject constructor(
     private val apiService: ServifyApiService,
+    private val userRepository: IUserRepository,
     private val context: Context
 ) :
     IAuthorizationRepository, BaseRepository() {
@@ -55,7 +57,9 @@ class AuthorizationRepositoryImp @Inject constructor(
     }
 
     override suspend fun loginUser(email: String, password: String): UserAuth {
-        return wrapResponse { apiService.loginUser(email, password) }?.data?.userAuth?.toUserAuth()
+        val response =  wrapResponse { apiService.loginUser(email, password) }?.data
+        userRepository.saveUserId(response?.id ?: "")
+        return response?.userAuth?.toUserAuth()
             ?: UserAuth("", false, AuthServiceProvider.EMAIL)
     }
 

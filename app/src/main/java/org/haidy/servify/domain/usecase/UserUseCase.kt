@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import org.haidy.servify.app.utils.LanguageCode
 import org.haidy.servify.app.utils.ThemeMode
 import org.haidy.servify.domain.model.User
+import org.haidy.servify.domain.model.UserData
 import org.haidy.servify.domain.repository.IUserRepository
 import javax.inject.Inject
 
@@ -66,6 +67,10 @@ class UserUseCase @Inject constructor(
         return userRepo.saveUserId(userId)
     }
 
+    suspend fun getUserId(): String{
+        return userRepo.getUserId()
+    }
+
     suspend fun saveEmail(email: String) {
         userRepo.saveEmail(email)
     }
@@ -76,6 +81,10 @@ class UserUseCase @Inject constructor(
 
     suspend fun saveAuthProvider(provider: String) {
         userRepo.saveProvider(provider)
+    }
+
+    suspend fun getUserData(userId: String): UserData {
+        return userRepo.getUserData(userId)
     }
 
 }

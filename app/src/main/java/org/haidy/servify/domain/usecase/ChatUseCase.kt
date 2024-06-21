@@ -7,8 +7,8 @@ import org.haidy.servify.domain.repository.IChatRepository
 import javax.inject.Inject
 
 class ChatUseCase @Inject constructor(private val chatRepo: IChatRepository){
-    suspend fun sendMessage(senderId: String, receiverId: String, message: String){
-        chatRepo.sendMessage(senderId, receiverId, message)
+    suspend fun sendMessage(chatId: String, senderId: String, receiverId: String, message: String){
+        chatRepo.sendMessage(chatId, senderId, receiverId, message)
     }
     suspend fun getChatId(otherUserId: String): String{
         return chatRepo.getChatId(otherUserId)

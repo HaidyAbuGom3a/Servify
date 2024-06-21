@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
@@ -32,6 +33,7 @@ import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
 import org.haidy.servify.presentation.modifier.noRippleEffect
+import org.haidy.servify.presentation.screens.chat.navigateToChat
 import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.bottomBorder
 import org.haidy.servify.presentation.util.calculateTimeDifference
@@ -42,7 +44,7 @@ fun ChatHistoryScreen(viewModel: ChatHistoryViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     EffectHandler(effects = viewModel.effect) { effect, navController ->
         when (effect) {
-            is ChatHistoryUiEffect.NavigateToChat -> {}
+            is ChatHistoryUiEffect.NavigateToChat -> navController.navigateToChat(effect.otherUseId)
             ChatHistoryUiEffect.NavigateUp -> navController.popBackStack()
         }
     }
@@ -108,17 +110,18 @@ private fun ChatHistoryItem(
                 onClickItem(otherUserId)
             }
             .bottomBorder(
-                (1.5).dp,
-                Theme.colors.primary200
+                (1).dp,
+                Theme.colors.primary300
             )
-            .padding(top = 16.dp)
+            .padding(vertical = 16.dp)
     ) {
         Image(
             painter = rememberAsyncImagePainter(model = otherUserImageUrl),
             contentDescription = null,
             modifier = Modifier
                 .clip(CircleShape)
-                .size(50.dp)
+                .size(50.dp),
+            contentScale = ContentScale.Crop
         )
         Column(
             modifier = Modifier

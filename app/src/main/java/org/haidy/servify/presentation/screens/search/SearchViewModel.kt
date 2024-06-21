@@ -53,6 +53,10 @@ class SearchViewModel @Inject constructor(private val specialistsUseCase: Specia
         )
     }
 
+    override fun onClickChat(specialistId: String) {
+        sendNewEffect(SearchUiEffect.NavigateToChat(specialistId))
+    }
+
     fun updateFilter(filter: SearchFilter) {
         _state.update { it.copy(filter = filter) }
     }

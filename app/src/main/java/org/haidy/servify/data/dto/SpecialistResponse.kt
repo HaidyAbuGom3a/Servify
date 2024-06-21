@@ -8,6 +8,8 @@ import kotlinx.serialization.Serializable
 data class SpecialistResponse(
     @SerializedName("service_name")
     val serviceName: String? = null,
+    @SerializedName("user_id")
+    val userId: String? = null,
     @SerialName("specialist")
     val specialist: SpecialistDto? = null
 )

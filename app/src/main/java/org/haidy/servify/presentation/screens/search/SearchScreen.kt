@@ -30,6 +30,7 @@ import org.haidy.servify.app.theme.Theme
 import org.haidy.servify.presentation.composable.ServifyAppBar
 import org.haidy.servify.presentation.composable.ServifyTextField
 import org.haidy.servify.presentation.modifier.noRippleEffect
+import org.haidy.servify.presentation.screens.chat.navigateToChat
 import org.haidy.servify.presentation.screens.home.composable.ItemSpecialist
 import org.haidy.servify.presentation.screens.searchFilter.navigateToFilter
 import org.haidy.servify.presentation.util.EffectHandler
@@ -41,6 +42,7 @@ fun SearchScreen(viewModel: SearchViewModel = hiltViewModel()) {
         when (effect) {
             SearchUiEffect.NavigateUp -> navController.popBackStack()
             SearchUiEffect.NavigateToFilter -> navController.navigateToFilter()
+            is SearchUiEffect.NavigateToChat -> navController.navigateToChat(effect.specialistId)
         }
     }
     SearchContent(state = state, listener = viewModel)
@@ -109,7 +111,7 @@ fun SearchContent(state: SearchUiState, listener: SearchInteractionListener) {
                 ItemSpecialist(
                     onClickFav = {},
                     onClickBookNow = { },
-                    onClickMessage = {},
+                    onClickMessage = { listener.onClickChat(it) },
                     onClickCall = {},
                     specialist = specialist,
                     cardWidth = 130.dp

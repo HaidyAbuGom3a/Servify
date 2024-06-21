@@ -5,7 +5,7 @@ import org.haidy.servify.domain.model.Message
 import org.haidy.servify.domain.model.UserChats
 
 interface IChatRepository {
-    suspend fun sendMessage(senderId: String, receiverId: String, message: String)
+    suspend fun sendMessage(chatId: String, senderId: String, receiverId: String, message: String)
     suspend fun getChatId(otherUserId: String): String
     suspend fun getChatHistory(): Flow<UserChats>
     suspend fun getMessages(chatId: String): Flow<List<Message>>

@@ -44,9 +44,10 @@ object RepositoryModule {
     @Provides
     fun provideAuthRepository(
         apiService: ServifyApiService,
+        userRepository: IUserRepository,
         @ApplicationContext context: Context
     ): IAuthorizationRepository {
-        return AuthorizationRepositoryImp(apiService, context)
+        return AuthorizationRepositoryImp(apiService, userRepository, context)
     }
 
     @Singleton

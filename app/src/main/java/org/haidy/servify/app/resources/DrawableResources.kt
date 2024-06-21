@@ -64,6 +64,8 @@ data class DrawableResources(
     val filterIcon: Int = R.drawable.filter_icon,
     val notFoundImage: Int = R.drawable.not_found_image,
     val chatIcon: Int = R.drawable.chat_icon,
+    val emojiIcon: Int = R.drawable.emoji_icon,
+    val sendIcon: Int = R.drawable.send_icon
 )
 
 val DrawableDarkResources = DrawableResources(

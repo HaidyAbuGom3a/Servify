@@ -12,6 +12,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonColors
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -52,9 +54,17 @@ fun ServifyTextField(
     readOnly: Boolean = false,
     trailingIconEnabled: Boolean = onTrailingIconClick != {},
     iconTint: Color? = null,
+    leadingIconTint: Color? = null,
+    trailingIconTint: Color? = null,
     cursorColor: Color = Theme.colors.accent100,
-    outlinedTextFieldDefaults: TextFieldColors = outlinedTextFieldColorDefaults(cursorColor),
-    minHeight: Int = 48
+    containerColor: Color = Theme.colors.grey200,
+    outlinedTextFieldDefaults: TextFieldColors = outlinedTextFieldColorDefaults(
+        cursorColor,
+        containerColor
+    ),
+    minHeight: Int = 48,
+    trailingIconButtonColors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
+    trailingIconButtonModifier: Modifier = Modifier
 
 ) {
     Column(
@@ -64,7 +74,7 @@ fun ServifyTextField(
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = minHeight.dp, max = if(minHeight > 160) minHeight.dp else 160.dp),
+                .heightIn(min = minHeight.dp, max = if (minHeight > 160) minHeight.dp else 160.dp),
             value = text,
             placeholder = {
                 Text(
@@ -75,7 +85,10 @@ fun ServifyTextField(
             },
             onValueChange = onValueChange,
             shape = RoundedCornerShape(radius),
-            textStyle = Theme.typography.bodyLarge.copy(color = Theme.colors.dark200, fontSize = 16.sp),
+            textStyle = Theme.typography.bodyLarge.copy(
+                color = Theme.colors.dark200,
+                fontSize = 16.sp
+            ),
             singleLine = isSingleLine,
             keyboardOptions = keyboardOptions,
             visualTransformation = servifyVisualTransformation(keyboardType, showPassword),
@@ -85,11 +98,13 @@ fun ServifyTextField(
                     IconButton(
                         onClick = onTrailingIconClick,
                         enabled = trailingIconEnabled,
+                        colors = trailingIconButtonColors,
+                        modifier = trailingIconButtonModifier
                     ) {
                         Icon(
                             painter = trailingPainter,
                             contentDescription = "trailing icon",
-                            tint = iconTint ?: Theme.colors.dark300.copy(alpha = 0.7f)
+                            tint = iconTint ?: trailingIconTint ?: Theme.colors.dark300.copy(alpha = 0.7f)
                         )
                     }
                 }
@@ -99,8 +114,10 @@ fun ServifyTextField(
                     Icon(
                         painter = leadingPainter,
                         contentDescription = "leading icon",
-                        tint = iconTint ?: Theme.colors.dark300.copy(alpha = 0.7f),
-                        modifier = Modifier.size(20.dp).noRippleEffect(onLeadingIconClick)
+                        tint = iconTint ?: leadingIconTint ?: Theme.colors.dark300.copy(alpha = 0.7f),
+                        modifier = Modifier
+                            .size(20.dp)
+                            .noRippleEffect(onLeadingIconClick)
                     )
                 }
             } else null,
@@ -120,15 +137,16 @@ fun ServifyTextField(
 }
 
 @Composable
-fun outlinedTextFieldColorDefaults(cursorColor: Color) = OutlinedTextFieldDefaults.colors(
-    focusedContainerColor = Theme.colors.grey200,
-    unfocusedContainerColor = Theme.colors.grey200,
-    errorCursorColor = Theme.colors.error100.copy(alpha = 0.8f),
-    cursorColor = cursorColor,
-    focusedBorderColor = Theme.colors.grey100,
-    unfocusedBorderColor = Theme.colors.grey200,
-    errorBorderColor = Theme.colors.error100.copy(alpha = 0.8f),
-)
+fun outlinedTextFieldColorDefaults(cursorColor: Color, containerColor: Color) =
+    OutlinedTextFieldDefaults.colors(
+        focusedContainerColor = containerColor,
+        unfocusedContainerColor = containerColor,
+        errorCursorColor = Theme.colors.error100.copy(alpha = 0.8f),
+        cursorColor = cursorColor,
+        focusedBorderColor = Theme.colors.grey100,
+        unfocusedBorderColor = Theme.colors.grey200,
+        errorBorderColor = Theme.colors.error100.copy(alpha = 0.8f),
+    )
 
 @Composable
 private fun servifyVisualTransformation(

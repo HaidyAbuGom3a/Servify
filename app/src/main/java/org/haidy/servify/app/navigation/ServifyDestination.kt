@@ -31,4 +31,5 @@ object ServifyDestination {
     const val SEARCH: String = "Search"
     const val FILTER: String = "Filter"
     const val CHATS: String = "Chats"
+    const val CHAT: String = "Chat"
 }

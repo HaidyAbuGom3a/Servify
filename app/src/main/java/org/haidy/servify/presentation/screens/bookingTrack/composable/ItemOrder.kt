@@ -52,7 +52,7 @@ fun ItemOrder(
                         (1.5).dp,
                         Theme.colors.accent100
                     )
-                    .padding(top = 8.dp, bottom = 12.dp),
+                    .padding(top = 12.dp, bottom = 8.dp),
                 style = Theme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
                     color = Theme.colors.contrast
@@ -67,7 +67,7 @@ fun ItemOrder(
                         bottomBorderStroke,
                         Theme.colors.accent100
                     )
-                    .padding(top = 12.dp, bottom = 16.dp),
+                    .padding(top = 16.dp, bottom = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(

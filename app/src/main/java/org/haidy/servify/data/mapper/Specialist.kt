@@ -8,6 +8,7 @@ import org.haidy.servify.domain.model.Specialist
 fun SpecialistResponse.toSpecialist(): Specialist {
     return Specialist(
         id = specialist?.id ?: "",
+        idAsUser = userId ?: "",
         name = specialist?.name ?: "",
         service = getService(serviceName ?: ""),
         imageUrl = specialist?.image ?: "",

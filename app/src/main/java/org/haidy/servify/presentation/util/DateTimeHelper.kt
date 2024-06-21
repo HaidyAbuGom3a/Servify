@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import org.haidy.servify.app.resources.Resources
 import org.haidy.servify.app.utils.LanguageCode
 import java.text.SimpleDateFormat
+import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -33,6 +34,17 @@ fun Long.convertToDayOfMonth(): String{
     val formatter = SimpleDateFormat("dd MMM", locale)
     val date = Date(this * 1000)
     return formatter.format(date)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun convertTimestampToTimeString(timestamp: Long): String {
+    val localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault())
+    val locale =
+        if (Resources.languageCode.value == LanguageCode.AR || Resources.languageCode.value == LanguageCode.EG) Locale(
+            "ar"
+        ) else Locale.getDefault()
+    val formatter = DateTimeFormatter.ofPattern("hh:mm a", locale)
+    return localDateTime.format(formatter)
 }
 
 @RequiresApi(Build.VERSION_CODES.O)

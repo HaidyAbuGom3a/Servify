@@ -10,6 +10,7 @@ import org.haidy.servify.presentation.screens.bokkingSuccess.bookingSuccessRoute
 import org.haidy.servify.presentation.screens.bookingAppointment.bookingAppointmentRoute
 import org.haidy.servify.presentation.screens.bookingCancellation.bookingCancellationRoute
 import org.haidy.servify.presentation.screens.bookingTrack.bookingTrackRoute
+import org.haidy.servify.presentation.screens.chat.chatRoute
 import org.haidy.servify.presentation.screens.chatHistory.chatHistoryRoute
 import org.haidy.servify.presentation.screens.feedback.feedBackRoute
 import org.haidy.servify.presentation.screens.forgotPassword.resetPassword.resetPasswordRoute
@@ -74,5 +75,6 @@ fun ServifyNavGraph(startDestination: String) {
         searchRoute()
         filterRoute()
         chatHistoryRoute()
+        chatRoute()
     }
 }

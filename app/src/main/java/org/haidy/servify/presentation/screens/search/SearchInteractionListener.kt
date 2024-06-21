@@ -5,4 +5,5 @@ interface SearchInteractionListener {
     fun onClickBackIcon()
     fun onClickFilter()
     fun onClickSearchIcon()
+    fun onClickChat(specialistId: String)
 }
