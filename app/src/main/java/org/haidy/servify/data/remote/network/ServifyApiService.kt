@@ -77,14 +77,20 @@ interface ServifyApiService {
         @Path("otp_code") otp: String,
     ): Response<MessageResponse>
 
-    @GET("api/login/google/callback/{uid}")
+    @FormUrlEncoded
+    @POST("api/login/google/callback/{uid}")
     suspend fun loginWithGoogle(
-        @Path("uid") userId: String
+        @Path("uid") userId: String,
+        @Field("country_id") countryId: String = "1",
+        @Field("governorate_id") governorateId: String = "1"
     ): Response<BaseResponse<UserDto>>
 
-    @GET("api/login/facebook/callback/{uid}")
+    @FormUrlEncoded
+    @POST("api/login/facebook/callback/{uid}")
     suspend fun loginWithFacebook(
-        @Path("uid") userId: String
+        @Path("uid") userId: String,
+        @Field("country_id") countryId: String = "1",
+        @Field("governorate_id") governorateId: String = "1"
     ): Response<BaseResponse<UserDto>>
 
     @GET("api/profile")
