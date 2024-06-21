@@ -12,4 +12,5 @@ interface ISpecialistRepository {
 
     suspend fun getNearestSpecialists(): List<Specialist>
     suspend fun getSpecialist(id: String): Specialist
+    suspend fun getServiceSpecialists(serviceName: String): List<Specialist>
 }

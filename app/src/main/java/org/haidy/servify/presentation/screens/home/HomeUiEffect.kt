@@ -11,4 +11,5 @@ sealed class HomeUiEffect {
     object NavigateToAddService : HomeUiEffect()
     object NavigateToAddCard : HomeUiEffect()
     data class NavigateToBookingAppointment(val specialistId: String): HomeUiEffect()
+    data class NavigateToServiceSpecialists(val serviceName: String): HomeUiEffect()
 }

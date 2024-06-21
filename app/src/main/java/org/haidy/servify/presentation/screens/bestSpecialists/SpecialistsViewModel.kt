@@ -1,4 +1,4 @@
-package org.haidy.servify.presentation.screens.specialists
+package org.haidy.servify.presentation.screens.bestSpecialists
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update

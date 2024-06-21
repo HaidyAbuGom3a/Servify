@@ -31,7 +31,8 @@ import org.haidy.servify.presentation.screens.searchFilter.filterRoute
 import org.haidy.servify.presentation.screens.services.servicesRoute
 import org.haidy.servify.presentation.screens.settings.settingsRoute
 import org.haidy.servify.presentation.screens.signup.signupScreenRoute
-import org.haidy.servify.presentation.screens.specialists.bestSpecialistsRoute
+import org.haidy.servify.presentation.screens.bestSpecialists.bestSpecialistsRoute
+import org.haidy.servify.presentation.screens.serviceSpecialists.serviceSpecialistsRoute
 import org.haidy.servify.presentation.screens.support.supportRoute
 import org.haidy.servify.presentation.screens.updatePassword.updatePasswordRoute
 import org.haidy.servify.presentation.screens.verified.verifiedRoute
@@ -76,5 +77,6 @@ fun ServifyNavGraph(startDestination: String) {
         filterRoute()
         chatHistoryRoute()
         chatRoute()
+        serviceSpecialistsRoute()
     }
 }

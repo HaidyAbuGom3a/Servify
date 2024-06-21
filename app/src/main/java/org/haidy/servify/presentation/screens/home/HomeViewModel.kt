@@ -133,4 +133,8 @@ class HomeViewModel @Inject constructor(
     override fun onClickSearch() {
         sendNewEffect(HomeUiEffect.NavigateToSearch)
     }
+
+    override fun onClickService(serviceName: String) {
+        sendNewEffect(HomeUiEffect.NavigateToServiceSpecialists(serviceName))
+    }
 }

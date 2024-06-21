@@ -61,7 +61,8 @@ import org.haidy.servify.presentation.screens.profile.navigateToProfile
 import org.haidy.servify.presentation.screens.search.navigateToSearch
 import org.haidy.servify.presentation.screens.services.navigateToServices
 import org.haidy.servify.presentation.screens.settings.navigateToSettings
-import org.haidy.servify.presentation.screens.specialists.navigateToBestSpecialists
+import org.haidy.servify.presentation.screens.bestSpecialists.navigateToBestSpecialists
+import org.haidy.servify.presentation.screens.serviceSpecialists.navigateToServiceSpecialists
 import org.haidy.servify.presentation.util.EffectHandler
 import org.haidy.servify.presentation.util.OnLifecycleEvent
 import org.haidy.servify.presentation.util.sum
@@ -91,6 +92,9 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
             )
 
             HomeUiEffect.NavigateToSearch -> navController.navigateToSearch()
+            is HomeUiEffect.NavigateToServiceSpecialists -> navController.navigateToServiceSpecialists(
+                effect.serviceName
+            )
         }
 
     }
@@ -117,7 +121,6 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
 fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
     val scope = rememberCoroutineScope()
     val drawerState = LocalDrawerState.current
-    //val pullToRefreshState = rememberPullToRefreshState()
     Scaffold(
         topBar = {
             HomeTopBar(
@@ -221,7 +224,7 @@ fun HomeContent(state: HomeUiState, listener: HomeInteractionListener) {
                                     .build()
                             )
                             ItemService(
-                                onClick = { },
+                                onClick = { listener.onClickService(it) },
                                 painter = painter,
                                 title = service.name
                             )

@@ -30,8 +30,8 @@ class ServicesViewModel @Inject constructor(
         )
     }
 
-    override fun onClickService(serviceId: String) {
-        sendNewEffect(ServicesUiEffect.NavigateToServiceDetail(serviceId))
+    override fun onClickService(serviceName: String) {
+        sendNewEffect(ServicesUiEffect.NavigateToServiceDetail(serviceName))
     }
 
     override fun onClickBackIcon() {

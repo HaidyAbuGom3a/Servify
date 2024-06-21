@@ -28,6 +28,10 @@ class FakeSpecialistsRepository : ISpecialistRepository {
     override suspend fun getSpecialist(id: String): Specialist {
         return specialists.first { it.id == id }
     }
+
+    override suspend fun getServiceSpecialists(serviceName: String): List<Specialist> {
+        TODO("Not yet implemented")
+    }
 }
 
 

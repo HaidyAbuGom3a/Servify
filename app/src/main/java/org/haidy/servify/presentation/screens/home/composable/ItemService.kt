@@ -21,14 +21,14 @@ import org.haidy.servify.presentation.modifier.noRippleEffect
 
 @Composable
 fun ItemService(
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
     painter: Painter,
     title: String,
     modifier: Modifier = Modifier
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.noRippleEffect { onClick() }
+        modifier = modifier.noRippleEffect { onClick(title) }
     ) {
         Box(
             modifier = Modifier

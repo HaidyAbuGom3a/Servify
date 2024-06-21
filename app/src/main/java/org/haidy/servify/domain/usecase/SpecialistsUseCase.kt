@@ -13,6 +13,10 @@ class SpecialistsUseCase @Inject constructor(
         return fakeSpecialistsRepo.getBestSpecialists()
     }
 
+    suspend fun getServiceSpecialists(serviceName: String): List<Specialist> {
+        return specialistsRepo.getServiceSpecialists(serviceName)
+    }
+
     suspend fun getNearestSpecialists(): List<Specialist> {
         return fakeSpecialistsRepo.getNearestSpecialists()
     }

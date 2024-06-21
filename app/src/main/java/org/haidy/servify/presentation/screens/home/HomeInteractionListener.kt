@@ -11,4 +11,5 @@ interface HomeInteractionListener {
     fun onClickAddCard()
     fun onClickBookNow(specialistId: String)
     fun onClickSearch()
+    fun onClickService(serviceName: String)
 }

@@ -124,6 +124,11 @@ interface ServifyApiService {
     @GET("api/services/best-specialists")
     suspend fun getBestSpecialists(): Response<BaseResponse<List<SpecialistResponse>>>
 
+    @GET("api/services/{name}")
+    suspend fun getServiceSpecialists(
+        @Path("name") serviceName: String
+    ): Response<BaseResponse<List<SpecialistResponse>>>
+
     @GET("api/user/{id}")
     suspend fun getUerData(
         @Path("id") userId: String

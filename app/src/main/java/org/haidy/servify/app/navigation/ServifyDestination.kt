@@ -20,6 +20,7 @@ object ServifyDestination {
     const val VERIFIED = "Verified"
     const val SERVICES = "Services"
     const val SPECIALISTS = "Specialists"
+    const val SERVICE_SPECIALISTS = "ServiceSpecialists"
     const val FEEDBACK = "Feedback"
     const val BOOKING_CANCELLATION: String = "BookingCancellation"
     const val BOOKING_APPOINTMENT: String = "BookingAppointment"

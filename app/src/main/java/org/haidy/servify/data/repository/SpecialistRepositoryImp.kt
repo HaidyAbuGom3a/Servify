@@ -36,4 +36,9 @@ class SpecialistRepositoryImp @Inject constructor(private val apiService: Servif
     override suspend fun getSpecialist(id: String): Specialist {
         TODO("Not yet implemented")
     }
+
+    override suspend fun getServiceSpecialists(serviceName: String): List<Specialist> {
+        return wrapResponse { apiService.getServiceSpecialists(serviceName) }?.data?.map { it.toSpecialist() }
+            ?: emptyList()
+    }
 }

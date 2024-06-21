@@ -1,6 +1,5 @@
 package org.haidy.servify.presentation.screens.home.composable
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -190,7 +189,6 @@ fun ItemSpecialist(
                         modifier = Modifier
                             .size(24.dp)
                             .noRippleEffect {
-                                Log.v("Haaidy", "id as user is ${specialist.idAsUser}")
                                 onClickMessage(specialist.idAsUser)
                             }
                             .padding(4.dp)
