@@ -69,4 +69,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 If you have any questions, feel free to reach out:
 - **Email**: haidyabugom3a@gmail.com
-- **LinkedIn**: [Haidy Abou Gomaa](https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/haidy-abou-gomaa-67137a213/))
+- **LinkedIn**: [Haidy Abou Gomaa](https://www.linkedin.com/in/haidy-abou-gomaa-67137a213/)
